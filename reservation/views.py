@@ -62,7 +62,13 @@ def register(request):
 
         if password != confirmation:
             messages.error(request,"Password Must Match")
-            return HttpResponseRedirect(reverse('register'))
+            return render(request, "reservation/register.html",{
+                "username":username,
+                "email":email,
+                "first_name": first_name,
+                "last_name":last_name,
+                "role":role,
+            })
         # Attempt to create new user
         try:
             user = User.objects.create_user(username=username, email=email, password=password,
@@ -70,7 +76,14 @@ def register(request):
             user.save()
         except IntegrityError:
             messages.error(request,"Username Already taken!")
-            return HttpResponseRedirect(reverse('register'))
+            return render(request, "reservation/register.html",{
+                "username":username,
+                "email":email,
+                "first_name": first_name,
+                "last_name":last_name,
+                "role":role,
+                "password":password
+            })
         messages.success(request,"Registered Successfully! You can now Log in")
         return HttpResponseRedirect(reverse('register'))
     else:
