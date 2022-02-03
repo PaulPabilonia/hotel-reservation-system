@@ -1,0 +1,30 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  padding: 50px 50px 0px 50px;
+  font-family: sans-serif;
+  position: relative;
+  font: 16px "Red Hat Display", sans-serif;
+  background-color: #E0EAFF; 
+}
+/* .nav-link{
+  color: #030303!important;
+}
+.norm-link{
+  color:royalblue !important;
+} */
+
+
+.titles{
+  color: red;
+}
+.titlesHeader{
+  color: white;
+}
+#message{
+  color: red;
+}

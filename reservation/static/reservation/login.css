@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap");
+
+body{
+    position: relative;
+    font: 16px "Red Hat Display", sans-serif;
+    color: #e0e8ff;
+    background-color: #e0eaff;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/pattern-background-desktop.svg);
+    background-repeat: no-repeat;
+    background-position: 0 -260px;
+    background-size: 100% 100%;
+}
+
+#message{
+    color: red;
+}
+.card{
+    background-color: white;
+    max-width: 375px;
+    max-height: fit-content;
+    padding: 150px 30px 30px 30px;
+    text-align: center;
+    border-radius: 20px;
+    background-image: url(images/lspulogo.png);
+    background-position: top;
+    background-position-y: 10px;
+    background-repeat: no-repeat;
+    background-size: 40% 125px;
+    box-shadow: -2px 11px 41px -4px rgba(114, 128, 167, 0.75);
+}
+.card_content{
+    padding: 20px 10px 10px 10px;
+}
+.card_title{
+    color: hsl(223, 47%, 23%);
+    font-weight: 900;
+}
+.card_paragraph{
+    color:  hsl(224, 23%, 55%);
+    font-weight: 700;
+}
+.card_plan{
+    display: flex;
+    padding: 10px 5px 5px 10px;
+    justify-content: start;
+    background-color: hsl(225, 100%, 98%);
+    border-radius: 15px;
+}
+.card_plan_p {
+    color: hsl(223, 47%, 23%);
+    font-weight: 900;
+}
+.card_plan_p span{
+    color: hsl(224, 23%, 55%);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-weight: 500;
+}
+.icon_music{
+    padding: 10px;
+}
+.change_link{
+    padding-left: 70px;
+    margin-top: 20px;
+    opacity: 1;
+    font-weight: 700;
+    transition: all ease-in-out 150ms;
+    color: hsl(245, 75%, 52%);
+}
+.change_link:hover{
+    opacity: 0.7;
+    text-decoration: none;
+}
+.btn{
+    display: block;
+    padding: 5px;
+    width: 100%;
+    margin: 5px;
+    background-color: hsl(245, 75%, 52%);
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    margin: 10px 0;
+    box-shadow: 0px 11px 34px -8px rgba(57, 42, 225, 0.75);
+    opacity: 1;
+    transition: all ease-in-out 150ms;
+}
+.btn:hover{
+    opacity: 0.7;
+}
+.btn_cancel{
+  background-color: transparent;
+  color:  hsl(223, 47%, 23%);
+  opacity: 0.7;
+  font-weight: 700;
+  box-shadow: none;
+}
+.btn_cancel:hover{
+    color:  hsl(223, 47%, 23%);
+    opacity: 1;
+    font-weight: 700;
+    box-shadow: none;
+  }
+
+.homeBody{
+    height: 100vh;
+    width: 100%;
+    background-color:#EFEFE8;
+}
+
+@media (max-width: 420px){
+    .container{
+        background-image: url(images/pattern-background-mobile.svg);
+    }
+    .card{
+        max-width: 375px;
+        padding: 200px 30px 30px 30px;
+        background-size: 100% 200px;
+    }
+}
