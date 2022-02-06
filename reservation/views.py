@@ -12,14 +12,7 @@ from .models import User, UserProfile
 
 
 def index(request):
-
-    # Authenticated users view their inbox
-    if request.user.is_authenticated:
-        return render(request, "reservation/index.html")
-
-    # Everyone else is prompted to sign in
-    else:
-        return HttpResponseRedirect(reverse("login"))
+    return render(request, "reservation/index.html")
 
 def login_view(request):
     if request.method == "POST":
