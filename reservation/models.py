@@ -16,3 +16,19 @@ class UserProfile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     #auto_now = the date when you modifed/update a listings
     update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.user
+
+class Booking(models.Model):
+    #default = None means that it will store none if the user decides not to fill the data.
+    client = models.ForeignKey(User, on_delete=models.CASCADE,related_name="booking",default=None)
+    checkIn = models.CharField(max_length=100)
+    checkOut = models.CharField(max_length=100)
+    phoneNo = models.IntegerField(default=0)
+    noAdults = models.IntegerField(default=0)
+    noKids = models.IntegerField(default=0)
+    #auto_now_add = a start date you first add a listings
+    created_at = models.DateTimeField(auto_now_add=True)
+    #auto_now = the date when you modifed/update a listings
+    update_at = models.DateTimeField(auto_now=True)

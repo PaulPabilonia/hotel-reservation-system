@@ -14,6 +14,15 @@ from .models import User, UserProfile
 def index(request):
     return render(request, "reservation/index.html")
 
+def bookNow(request):
+    if request.user.is_authenticated:
+        #Todo paltan ng booking stage
+        return render(request, "reservation/booking-details.html")
+
+    # Everyone else is prompted to sign in
+    else:
+        return render(request, "reservation/login.html")
+
 def login_view(request):
     if request.method == "POST":
 
