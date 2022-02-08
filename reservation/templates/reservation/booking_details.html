@@ -87,7 +87,7 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
+      <div class="container"> 
 
         <div class="d-flex justify-content-between align-items-center">
           <h2> Booking Details </h2>
@@ -102,6 +102,158 @@
 
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
+
+      <div class="container w-100 mb-4">
+        {% include 'reservation/messages.html' %}
+        <form class="row  needs-validation" action="{% url 'book_room' %}" method="post" novalidate>
+          {% csrf_token %}
+          <div class="col-md w-100">
+            <div class="box w-100">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <input name="username" type="text" class="form-control" placeholder="Username" value = "{{ user.username }}"required />
+                  </div>
+                </div>
+    
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input name="first_name" type="text" class="form-control" placeholder="First Name" value = "{{ user.first_name }}" required />
+                  </div>
+                </div>
+    
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="last_name" class="form-label">Last Name</label>
+                    <input name="last_name" type="text" class="form-control" placeholder="Last Name" value = "{{ user.last_name }}" required />
+                  </div>
+                </div>
+              </div>
+    
+    
+    
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Email</label>
+                    <input name="email" type="email" class="form-control" placeholder="Email" value = "{{ user.email }}" required />
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Phone Number</label>
+                    <input name="phoneNo" type="text" class="form-control" placeholder="Phone No" value="{{ phoneNo }}" required />
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Nationality</label>
+                    <input name="nationality" type="text" class="form-control" placeholder="Nationality" value="{{ nationality }}" required />
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Location</label>
+                    <input name="location" type="text" class="form-control" placeholder="Location" value="{{ location }}" required />
+                  </div>
+                </div>
+              </div>
+    
+    
+    
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Room Category</label>
+                    <select  class="form-control" name="room_category" id="select" required>
+                      <option disabled selected value>--Select Room Category--</option>
+                      <option value="Boozeman" >Boozeman</option>
+                      <option value="Glasgow" >Glasgow</option>
+                      <option value="Miami">Miami</option>
+                      <option value="Savanna">Savanna</option>
+                      <option value="Tulum">Tulum</option>
+                    </select>
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Room Type</label>
+                    <select name="room_type" class="form-control" required>
+                      <option disabled selected value>--Select Room Type--</option>
+                      <option value="Standarn">Standard</option>
+                      <option value="Deluxe">Deluxe</option>
+                      <option value="Premium">Premium</option>
+                    </select>
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Number of Adults</label>
+                    <input name="numAdults" type="number" class="form-control" placeholder="Number of Adults" value="{{ numAdults }}"required />
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Number Of Kids (0-17)</label>
+                    <input name="numKids" type="number" class="form-control" placeholder="Number of Kids (0-17)" value="{{ numKids }}" required />
+                  </div>
+                </div>
+              </div>
+    
+    
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Check-in</label>
+                    <input class="form-control calendar" type="text" name= "checkIn" placeholder="Check in Date" id="example1" value="{{ checkIn }}"required>
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Check-out</label>
+                    <input class="form-control  calendar " name="checkOut" type="text" placeholder="Check Out Date" id="example2" value="{{ checkOut }}" required>
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Mode of Payment</label>
+                    <select name="mop" class="form-control" required>
+                      <option disabled selected value>--Mode of Payment--</option>
+                      <option value="Cash">Cash</option>
+                      <option value="Online">Online</option>
+                      <option value="Card">Card</option>
+                    </select>
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label text-white">Book Now</label>
+                    <input name="" type="submit" class="btn btn-primary" value="BOOK ROOM" />
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+    
+            <div class="col-md-3">
+    
+            </div>
+    
+    
+          </div>
+        </form>
+      </div>
       <div class="container">
 
         <div class="row gy-4">
@@ -156,170 +308,7 @@
 
   </main><!-- End #main -->
 
-  <div class="container">
-
-    <form class="row g-3 needs-validation" action="" method="post" novalidate>
-      {% csrf_token %}
-      <div class="col-md-9">
-        <div class="box">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="form-group">
-                <input name="" type="text" class="form-control" placeholder="First Name" required />
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <input name="" type="text" class="form-control" placeholder="Middle Name" required />
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <input name="" type="text" class="form-control" placeholder="Last Name" required />
-              </div>
-            </div>
-          </div>
-
-
-
-          <div class="row">
-            <div class="col-md-3">
-              <div class="form-group">
-                <input name="" type="text" class="form-control" placeholder="Email ID" required />
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-                <input name="" type="text" class="form-control" placeholder="Mobile No" required />
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-                <input name="" type="text" class="form-control" placeholder="Nationality" required />
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-                <input name="" type="text" class="form-control" placeholder="Location" required />
-              </div>
-            </div>
-          </div>
-
-
-
-          <div class="row">
-            <div class="col-md-3">
-              <div class="form-group">
-                <select name="select" class="form-control" name="h_category" id="select" required>
-                  <option value="">--Select Hotel Category--</option>
-                  <option>Resort</option>
-                  <option>Luxury</option>
-                  <option>Deluxe</option>
-                  <option>7 Star Hotel</option>
-                  <option>5 Star Hotel</option>
-                  <option>3 Star Hotel</option>
-                  <option>Budget Hotel</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-                <select name="" class="form-control" required>
-                  <option value="">--Select Room Type--</option>
-                  <option>Standard</option>
-                  <option>Deluxe</option>
-                  <option>Premium</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-                <select name="" class="form-control" required>
-                  <option value="">--No Of Guest--</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                  <option>10+</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-                <select name="" class="form-control" required>
-                  <option value="">--No Of Days--</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                  <option>10+</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="row">
-            <div class="col-md-3">
-              <div class="form-group">
-                <input class="form-control calendar" type="text" placeholder="Check in Date" id="example1" required>
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-                <input class="form-control  calendar " type="text" placeholder="Check Out Date" id="example2" required>
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-                <select name="" class="form-control" required>
-                  <option value="">--Mode Of Payment--</option>
-                  <option>Cash</option>
-                  <option>Online</option>
-                  <option>Card</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-                <input name="" type="submit" class="btn btn-primary" value="BOOK ROOM" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-md-3">
-
-        </div>
-
-
-      </div>
-    </form>
-  </div>
+ 
 
 
 

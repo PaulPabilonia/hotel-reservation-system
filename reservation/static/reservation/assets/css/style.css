@@ -1,3 +1,6 @@
+/*--------------------------------------------------------------
+# booking registration
+--------------------------------------------------------------*/
 .box {
   padding: 20px;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(209, 202, 209, 1);
@@ -9,6 +12,7 @@
 .box input::placeholder,
 .box select option,
 .box select {
+  font-family: "Raleway", sans-serif;
   font-size: 12px;
   font-weight: 500;
   color: #000;

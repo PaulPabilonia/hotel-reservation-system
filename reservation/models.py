@@ -1,3 +1,4 @@
+from pyexpat import model
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -26,8 +27,13 @@ class Booking(models.Model):
     checkIn = models.CharField(max_length=100)
     checkOut = models.CharField(max_length=100)
     phoneNo = models.IntegerField(default=0)
-    noAdults = models.IntegerField(default=0)
-    noKids = models.IntegerField(default=0)
+    nationality= models.CharField(max_length=200)
+    location =  models.CharField(max_length=200)
+    numAdults = models.IntegerField(default=0)
+    numKids = models.IntegerField(default=0)
+    mop = models.CharField(max_length=100)
+    room_category = models.CharField(max_length=200,default=None)
+    room_type = models.CharField(max_length=100,default=None)
     #auto_now_add = a start date you first add a listings
     created_at = models.DateTimeField(auto_now_add=True)
     #auto_now = the date when you modifed/update a listings
