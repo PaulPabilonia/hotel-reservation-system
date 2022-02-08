@@ -29,11 +29,19 @@
   <link href="static/reservation/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <!-- form  -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css"
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css"
     rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script> -->
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
   <!-- Template Main CSS File -->
   <link href="static/reservation/assets/css/style.css" rel="stylesheet">
 
@@ -87,7 +95,7 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container"> 
+      <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
           <h2> Booking Details </h2>
@@ -113,74 +121,81 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="username" class="form-label">Username</label>
-                    <input name="username" type="text" class="form-control" placeholder="Username" value = "{{ user.username }}"required />
+                    <input name="username" type="text" class="form-control" placeholder="Username"
+                      value="{{ user.username }}" required />
                   </div>
                 </div>
-    
+
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="first_name" class="form-label">First Name</label>
-                    <input name="first_name" type="text" class="form-control" placeholder="First Name" value = "{{ user.first_name }}" required />
+                    <input name="first_name" type="text" class="form-control" placeholder="First Name"
+                      value="{{ user.first_name }}" required />
                   </div>
                 </div>
-    
+
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="last_name" class="form-label">Last Name</label>
-                    <input name="last_name" type="text" class="form-control" placeholder="Last Name" value = "{{ user.last_name }}" required />
+                    <input name="last_name" type="text" class="form-control" placeholder="Last Name"
+                      value="{{ user.last_name }}" required />
                   </div>
                 </div>
               </div>
-    
-    
-    
+
+
+
               <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="username" class="form-label">Email</label>
-                    <input name="email" type="email" class="form-control" placeholder="Email" value = "{{ user.email }}" required />
+                    <input name="email" type="email" class="form-control" placeholder="Email" value="{{ user.email }}"
+                      required />
                   </div>
                 </div>
-    
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="username" class="form-label">Phone Number</label>
-                    <input name="phoneNo" type="text" class="form-control" placeholder="Phone No" value="{{ phoneNo }}" required />
+                    <input name="phoneNo" type="text" class="form-control" placeholder="Phone No" value="{{ phoneNo }}"
+                      required />
                   </div>
                 </div>
-    
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="username" class="form-label">Nationality</label>
-                    <input name="nationality" type="text" class="form-control" placeholder="Nationality" value="{{ nationality }}" required />
+                    <input name="nationality" type="text" class="form-control" placeholder="Nationality"
+                      value="{{ nationality }}" required />
                   </div>
                 </div>
-    
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="username" class="form-label">Location</label>
-                    <input name="location" type="text" class="form-control" placeholder="Location" value="{{ location }}" required />
+                    <input name="location" type="text" class="form-control" placeholder="Location"
+                      value="{{ location }}" required />
                   </div>
                 </div>
               </div>
-    
-    
-    
+
+
+
               <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="username" class="form-label">Room Category</label>
-                    <select  class="form-control" name="room_category" id="select" required>
+                    <select class="form-control" name="room_category" id="select" required>
                       <option disabled selected value>--Select Room Category--</option>
-                      <option value="Boozeman" >Boozeman</option>
-                      <option value="Glasgow" >Glasgow</option>
+                      <option value="Boozeman">Boozeman</option>
+                      <option value="Glasgow">Glasgow</option>
                       <option value="Miami">Miami</option>
                       <option value="Savanna">Savanna</option>
                       <option value="Tulum">Tulum</option>
                     </select>
                   </div>
                 </div>
-    
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="username" class="form-label">Room Type</label>
@@ -192,38 +207,42 @@
                     </select>
                   </div>
                 </div>
-    
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="username" class="form-label">Number of Adults</label>
-                    <input name="numAdults" type="number" class="form-control" placeholder="Number of Adults" value="{{ numAdults }}"required />
+                    <input name="numAdults" type="number" class="form-control" placeholder="Number of Adults"
+                      value="{{ numAdults }}" required />
                   </div>
                 </div>
-    
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="username" class="form-label">Number Of Kids (0-17)</label>
-                    <input name="numKids" type="number" class="form-control" placeholder="Number of Kids (0-17)" value="{{ numKids }}" required />
+                    <input name="numKids" type="number" class="form-control" placeholder="Number of Kids (0-17)"
+                      value="{{ numKids }}" required />
                   </div>
                 </div>
               </div>
-    
-    
+
+
               <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="username" class="form-label">Check-in</label>
-                    <input class="form-control calendar" type="text" name= "checkIn" placeholder="Check in Date" id="example1" value="{{ checkIn }}"required>
+                    <input class="form-control calendar" type="text" name="checkIn" placeholder="Check in Date"
+                      id="example1" value="{{ checkIn }}" autocomplete="off" required>
                   </div>
                 </div>
-    
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="username" class="form-label">Check-out</label>
-                    <input class="form-control  calendar " name="checkOut" type="text" placeholder="Check Out Date" id="example2" value="{{ checkOut }}" required>
+                    <input class="form-control  calendar " name="checkOut" type="text" placeholder="Check Out Date"
+                      id="example2" value="{{ checkOut }}" autocomplete="off" required>
                   </div>
                 </div>
-    
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="username" class="form-label">Mode of Payment</label>
@@ -235,7 +254,7 @@
                     </select>
                   </div>
                 </div>
-    
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="username" class="form-label text-white">Book Now</label>
@@ -244,13 +263,36 @@
                 </div>
               </div>
             </div>
-    
-    
-            <div class="col-md-3">
-    
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
+                      {{ message }}
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="closedd" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
             </div>
-    
-    
+
+            <div class="col-md-3">
+
+            </div>
+
+
           </div>
         </form>
       </div>
@@ -308,7 +350,7 @@
 
   </main><!-- End #main -->
 
- 
+
 
 
 
@@ -317,6 +359,7 @@
     $(document).ready(function () {
       $('#example1').datepicker({
         format: "dd/mm/yyyy"
+
       });
     });
 
@@ -325,7 +368,13 @@
         format: "dd/mm/yyyy"
       });
     });
+    $(document).ready(function(){
+      $('#closedd').click(function(){
+        $('#exampleModal').modal('hide');
+      });
+    });
   </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>

@@ -68,7 +68,7 @@ def book_room(request):
                     "room_type": room_type
                 })
         messages.success(request, "Boooked Successfully!")
-        return HttpResponseRedirect(reverse('bookNow'))
+        return HttpResponseRedirect(reverse('booking_details'))
     else:
         return render(request, "reservation/index.html")
 
