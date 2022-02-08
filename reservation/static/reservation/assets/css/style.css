@@ -1,9 +1,33 @@
-/**
-* Template Name: OnePage - v4.7.0
-* Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+.box {
+  padding: 20px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(209, 202, 209, 1);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(209, 202, 209, 1);
+  box-shadow: 0px 0px 5px 0px rgba(209, 202, 209, 1);
+}
+
+.box input,
+.box input::placeholder,
+.box select option,
+.box select {
+  font-size: 12px;
+  font-weight: 500;
+  color: #000;
+}
+
+
+
+
+.box .btn {
+  width: 100%;
+  color: #fff;
+}
+
+.calendar {
+  outline: 0px;
+  color: #fff;
+  background: url(../img/icons/clender.png) no-repeat right;
+  background-position: right;
+}
 
 /*--------------------------------------------------------------
 # General
