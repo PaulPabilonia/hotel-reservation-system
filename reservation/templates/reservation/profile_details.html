@@ -1,0 +1,521 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>My Profile</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/static/reservation/assets/img/favicon.png" rel="icon">
+  <link href="/static/reservation/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/reservation/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/static/reservation/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/reservation/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/reservation/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/reservation/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/static/reservation/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/static/reservation/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/static/reservation/assets/css/style.css" rel="stylesheet">
+  <!-- 
+  Todo: 
+    1. Make a model and input. 
+    2. edit button and update function 
+    3. store images -->
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html">OnePage</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="/static/reservation/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto o" href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <!-- <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>My Profile</h2>
+          <ol>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li>My Profile</li>
+          </ol>
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+        <div class="main-body">
+
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">My Profile</li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+          {% include 'reservation/messages.html' %}
+          <form class="row g-3 needs-validation" method="post" enctype="multipart/form-data" novalidate>
+            <div class="row gutters-sm">
+              <div class="col-md-4 mb-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                      {% if userProfile.profile_img %}
+                      <img src="{{ userProfile.profile_img.url }}" alt="Admin" class="rounded-circle" width="150">
+                      {% else %}
+                      <img src="{% static './reservation/images/default_profile.png' %}" alt="Admin" class="rounded-circle" width="150">
+                      {% endif %}
+                      <div class="mt-3">
+                        <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                        {% if user.is_staff %}
+                        <p class="text-secondary mb-1">ADMIN</p>
+                        {% else %}
+                        <p class="text-secondary mb-1">Guest</p>
+                        {% endif %}
+                        <!-- <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p> -->
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="card mt-3">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path
+                          d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                      </svg>Website</h6>
+                    <span class="text-secondary">https://bootdey.com</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-github mr-2 icon-inline">
+                        <path
+                          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                      </svg>Github</h6>
+                    <span class="text-secondary">bootdey</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info">
+                        <path
+                          d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                        </path>
+                      </svg>Twitter</h6>
+                    <span class="text-secondary">@bootdey</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                      </svg>Instagram</h6>
+                    <span class="text-secondary">bootdey</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                      </svg>Facebook</h6>
+                    <span class="text-secondary">bootdey</span>
+                  </li>
+                </ul>
+              </div> -->
+              </div>
+
+              <div class="col-md-8">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-2 pt-2">
+                        <span class="">Username</span>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                        <input type="text" name="username" class="form-control p-2 text-secondary" id="username"
+                          disabled value="{{ user.username}}">
+                      </div>
+                      <div class="col-sm-2 pt-2">
+                        <span class="">Email</span>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                        <input type="email" name="email" class="form-control p-2 text-secondary" id="email" disabled
+                          value="{{ user.email }}">
+                      </div>
+
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-2 pt-2">
+                        <span class="">First Name</span>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                        <input type="text" name="first_name" class="form-control p-2 text-secondary" id="first_name"
+                          disabled value="{{ user.first_name }}">
+                      </div>
+                      <div class="col-sm-2 pt-2">
+                        <span class="">Last Name</span>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                        <input type="text" name="last_name" class="form-control p-2 text-secondary" id="last_name"
+                          disabled value="{{ user.last_name }}">
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-2 pt-2">
+                        <span class="">Phone No.</span>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                        <input type="text" name="phone_no" class="form-control p-2 text-secondary" id="phone_no"
+                          disabled value="{{ userProfile.phone_no }}">
+                      </div>
+                      <div class="col-sm-2 pt-2">
+                        <span class="">Nationality</span>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                        <input type="text" name="last_name" class="form-control p-2 text-secondary" id="nationality"
+                          disabled value="{{userProfile.nationality }}">
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-2 pt-2">
+                        <span class="">Password</span>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                        <input type="password" name="password" class="form-control p-2 text-secondary" id="password"
+                          disabled value="{{ user.password }}">
+                      </div>
+                      <div class="col-sm-2 pt-2">
+                        <span class="">Confirm Password</span>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                        <input type="password" name="confirmation" class="form-control p-2 text-secondary"
+                          id="confirmation" disabled value="{{ user.password }}">
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-2 pt-2">
+                        <span class="">Location</span>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                        <input type="text" name="location" class="form-control p-2 text-secondary" id="location"
+                          disabled value="{{ userProfile.location }}">
+                      </div>
+                      <div class="col-sm-2 pt-2">
+                        <span class="">Role</span>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                        {% if user.is_staff %}
+                        <input type="text" name="role" class="form-control p-2 text-secondary" value="ADMIN" disabled>
+                        {% else %}
+                        <input type="text" name="role" class="form-control p-2 text-secondary" value="GUEST" disabled>
+                        {% endif %}
+
+                      </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-2 pt-2">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                      </div>
+
+                      <div class="col-sm-2 pt-2">
+                        <span class=""></span>
+                      </div>
+                      <div class="col-sm-2 " id="edit">
+                        <button type="button" onclick="editing()" class="btn btn-primary ">Edit</button>
+                      </div>
+                      <div class="col-sm-4" style="display:none;" id="save">
+                        <a class="btn btn-primary " onclick="saving()">Save Changes</a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <!-- <div class="row gutters-sm">
+                <div class="col-sm-6 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h6 class="d-flex align-items-center mb-3"><i
+                          class="material-icons text-info mr-2">assignment</i>Project Status</h6>
+                      <small>Web Design</small>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small>Website Markup</small>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small>One Page</small>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small>Mobile Template</small>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small>Backend API</small>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h6 class="d-flex align-items-center mb-3"><i
+                          class="material-icons text-info mr-2">assignment</i>Project Status</h6>
+                      <small>Web Design</small>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small>Website Markup</small>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small>One Page</small>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small>Mobile Template</small>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small>Backend API</small>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>OnePage</h3>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br><br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Join Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>OnePage</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/ -->
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/static/reservation/assets/vendor/purecounter/purecounter.js"></script>
+  <script src="/static/reservation/assets/vendor/aos/aos.js"></script>
+  <script src="/static/reservation/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/reservation/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/static/reservation/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/static/reservation/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/static/reservation/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/static/reservation/assets/js/main.js"></script>
+  <script>
+    //Hide edit and save changes
+    const editing = () => {
+      var x = document.getElementById("save");
+      var y = document.getElementById("edit");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+        document.getElementById("username").disabled = false;
+        document.getElementById("email").disabled = false;
+        document.getElementById("first_name").disabled = false;
+        document.getElementById("last_name").disabled = false;
+        document.getElementById("password").disabled = false;
+        document.getElementById("confirmation").disabled = false;
+        document.getElementById("phone_no").disabled = false;
+        document.getElementById("nationality").disabled = false;
+        document.getElementById("location").disabled = false;
+        console.log('block')
+      } else {
+        x.style.display = "none";
+      }
+    }
+    const saving = () => {
+      var x = document.getElementById("edit");
+      var y = document.getElementById("save");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+        document.getElementById("username").disabled = true;
+        document.getElementById("email").disabled = true;
+        document.getElementById("first_name").disabled = true;
+        document.getElementById("last_name").disabled = true;
+        document.getElementById("password").disabled = true;
+        document.getElementById("confirmation").disabled = true;
+        document.getElementById("phone_no").disabled = true;
+        document.getElementById("nationality").disabled = true;
+        document.getElementById("location").disabled = true;
+        console.log('block')
+      } else {
+        x.style.display = "none";
+      }
+    }  
+  </script>
+</body>
+
+</html>

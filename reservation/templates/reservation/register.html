@@ -7,17 +7,21 @@
   <title>{% block title %}Hotel Registration{% endblock %}</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link href="/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet">
+  <link href="/fontawesome-free-5.15.4-web/css/all.css" type="text/html" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'reservation/register.css' %}">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 
 </head>
+<!-- Todo: 
+   1. add info for my profile
+   2. add image function
+  or recrate all model -->
 
 <body>
   <div>
     <div class="card mt-1 mx-auto rounded-3 shadow bg-body rounded" style="width: 50rem;">
       <div class="card-body">
-        <div class="col-12 mt-3" align="center">
+        <div class="col-md-12 mt-3" align="center">
           <h2 class="card_title">Register</h2>
         </div>
         <!-- {% if messages %}
@@ -28,9 +32,9 @@
           {% endfor %}
           {% endif %} -->
         {% include 'reservation/messages.html' %}
-        <form class="row g-3 needs-validation" action="{% url 'register' %}" method="post" novalidate>
+        <form class="row g-3 needs-validation" action="{% url 'register' %}" method="post" enctype="multipart/form-data" novalidate>
           {% csrf_token %}
-          <div class="col-md-6  mt-3">
+          <div class="col-sm-6  mt-3">
             <label for="validationServerUsername" class="form-label">Username</label>
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend3">@</span>
@@ -41,14 +45,14 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6  mt-3">
+          <div class="col-sm-6  mt-3">
             <label for="validationServer01" class="form-label">Email</label>
             <input type="email" name="email" class="form-control " id="validationServer01" value="{{ email }}" required>
             <div class="valid-feedback">
               Looks good!
             </div>
           </div>
-          <div class="col-md-6  mt-3">
+          <div class="col-sm-6  mt-3">
             <label for="validationServer02" class="form-label">Password</label>
             <input type="password" class="form-control" name="password" id="validationServer02" value="{{ password }}"
               required>
@@ -56,7 +60,7 @@
               Looks good!
             </div>
           </div>
-          <div class="col-md-6 mt-3">
+          <div class="col-sm-6 mt-3">
             <label for="validationServer02" class="form-label">Confirmation Password</label>
             <input type="password" class="form-control" name="confirmation" id="validationServer02"
               value="{{ password }}" required>
@@ -64,8 +68,7 @@
               Looks good!
             </div>
           </div>
-
-          <div class="col-md-4 mt-3">
+          <div class="col-sm-4 mt-3">
             <label for="validationCustom01" class="form-label">First name</label>
             <input type="text" class="form-control" id="validationCustom01" name="first_name" value="{{ first_name }}"
               required>
@@ -73,7 +76,7 @@
               Looks good!
             </div>
           </div>
-          <div class="col-md-4 mt-3">
+          <div class="col-sm-4 mt-3">
             <label for="validationCustom02" class="form-label">Last name</label>
             <input type="text" class="form-control" id="validationCustom02" name="last_name" value="{{ last_name }}"
               required>
@@ -81,14 +84,46 @@
               Looks good!
             </div>
           </div>
+          <div class="col-sm-4 mt-3">
+            <label for="validationCustom01" class="form-label">Phone No.</label>
+            <input type="text" class="form-control" id="validationCustom01" name="phone_no" value="{{ phone_no }}"
+              required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-sm-4 mt-3">
+            <label for="validationCustom02" class="form-label">Nationality</label>
+            <input type="text" class="form-control" id="validationCustom02" name="nationality" value="{{ nationality }}"
+              required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
 
-          <div class="col-md-4 mt-3">
+          <div class="col-sm-4 mt-3">
+            <label for="validationCustom05" class="form-label">Location</label>
+            <input type="text" class="form-control" id="validationCustom05" name="location" value="{{ location }}" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+
+          <div class="col-sm-4 mt-3">
             <label for="validationCustom05" class="form-label">Role</label>
             <input type="text" class="form-control" id="validationCustom05" name="role" value="{{ role }}" required>
             <div class="invalid-feedback">
               Please provide a valid Role Ex. Student or Admin.
             </div>
           </div>
+
+          <div class="col-sm-4 mt-3">
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Choose Profile</label>
+              <input type="file" class="form-control-file" id="profile_image" name="profile_img"> 
+            </div>
+          </div>
+
           <div class="col-12 mt-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="invalidCheck3"
@@ -122,8 +157,7 @@
 {% block script %}
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
   integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
   integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="{% static 'reservation/app.js' %}"></script>

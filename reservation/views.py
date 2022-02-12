@@ -15,22 +15,33 @@ def index(request):
     return render(request, "reservation/index.html")
 
 
-def booking_details(request):
+def profile_details(request,user_id):
+    userProfiles = UserProfile.objects.get(pk=user_id)
+    return render(request, "reservation/profile_details.html",{
+        'userProfile': userProfiles,
+    })
+
+
+def booking_details(request,user_id):
     if request.user.is_authenticated:
-        #Todo paltan ng booking stage
-        return render(request, "reservation/booking_details.html")
+        userProfiles = UserProfile.objects.get(pk=user_id)
+        return render(request, "reservation/booking_details.html",{
+            'userProfile': userProfiles,
+        })
 
     # Everyone else is prompted to sign in
     else:
         return render(request, "reservation/login.html")
 
 
-def book_room(request):
+def book_room(request,user_id):
     if request.method == "POST":
         user = request.user
-        phoneNo = request.POST["phoneNo"]
-        nationality = request.POST["nationality"]
-        location = request.POST["nationality"]
+        user_profile = UserProfile.objects.get(pk=user_id)
+        # phone_no = request.POST["phone_no"]
+        # nationality = request.POST["nationality"]
+        # location = request.POST["nationality"]
+
         room_category = request.POST["room_category"]
         room_type = request.POST["room_type"]
         numAdults = request.POST["numAdults"]
@@ -40,12 +51,11 @@ def book_room(request):
         mop = request.POST["mop"]
 
         try:
+
             book = Booking(client=user,
+                           user_profile = user_profile,
                            checkIn=checkIn,
                            checkOut=checkOut,
-                           phoneNo=phoneNo,
-                           nationality=nationality,
-                           location=location,
                            numAdults=numAdults,
                            numKids=numKids,
                            mop=mop,
@@ -58,9 +68,9 @@ def book_room(request):
                 request, "reservation/booking_details.html", {
                     "checkIn": checkIn,
                     "checkOut": checkOut,
-                    "phoneNo": phoneNo,
-                    "nationality": nationality,
-                    "location": location,
+                    # "phone_no": phone_no,
+                    # "nationality": nationality,
+                    # "location": location,
                     "numAdults": numAdults,
                     "numKids": numKids,
                     "mop": mop,
@@ -68,7 +78,8 @@ def book_room(request):
                     "room_type": room_type
                 })
         messages.success(request, "Boooked Successfully!")
-        return HttpResponseRedirect(reverse('booking_details'))
+        #after booking it will stay at the booking_details page
+        return HttpResponseRedirect(reverse('booking_details', args=(user_id,)))
     else:
         return render(request, "reservation/index.html")
 
@@ -105,6 +116,13 @@ def register(request):
         last_name = request.POST["last_name"]
         role = request.POST["role"]
 
+        #userProfile
+        phone_no = request.POST["phone_no"]
+        nationality = request.POST["nationality"]
+        location = request.POST["location"]
+        # profile_img = request.FILES["profile_img"]
+        profile_img = request.FILES.get('profile_img')
+
         # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
@@ -122,6 +140,9 @@ def register(request):
                     "first_name": first_name,
                     "last_name": last_name,
                     "role": role,
+                    "phone_no": phone_no,
+                    "nationality" : nationality,
+                    "location":location
                 })
         # Attempt to create new user
         try:
@@ -132,6 +153,12 @@ def register(request):
                                             last_name=last_name,
                                             is_staff=is_staff)
             user.save()
+            user_profile = UserProfile(client=user,
+                                       phone_no=phone_no,
+                                       nationality=nationality,
+                                       location=location,
+                                       profile_img=profile_img)
+            user_profile.save()
         except IntegrityError:
             messages.error(request, "Username Already taken!")
             return render(
@@ -141,7 +168,9 @@ def register(request):
                     "first_name": first_name,
                     "last_name": last_name,
                     "role": role,
-                    "password": password
+                    "phone_no": phone_no,
+                    "nationality" : nationality,
+                    "location":location
                 })
         messages.success(request,
                          "Registered Successfully! You can now Log in")

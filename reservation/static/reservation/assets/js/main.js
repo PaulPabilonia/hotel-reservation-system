@@ -1,11 +1,28 @@
-/**
-* Template Name: OnePage - v4.7.0
-* Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 (function() {
   "use strict";
+
+  // //Hide edit and save changes
+  // const editing = ()=> {
+  //   var x = document.getElementById("save");
+  //     console.log('save display block')
+  //     console.log('edit display none')
+  // }  
+  // const saving = ()=> {
+  //   var x = document.getElementById("edit");
+  //     console.log('saving display none')
+  //     console.log('editing display none')
+  // }  
+
+  // function myFunction() {
+  //   var x = document.getElementById("myDIV");
+  //   if (x.style.display === "none") {
+  //     x.style.display = "block";
+  //     console.log('block')
+  //   } else {
+  //     x.style.display = "none";
+  //   }
+  // }
 
   /**
    * Easy selector helper function
