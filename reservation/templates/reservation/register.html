@@ -32,7 +32,7 @@
           {% endfor %}
           {% endif %} -->
         {% include 'reservation/messages.html' %}
-        <form class="row g-3 needs-validation" action="{% url 'register' %}" method="post" enctype="multipart/form-data" novalidate>
+        <form class="row g-3 needs-validation" action="{% url 'register' %}" method="GET" enctype="multipart/form-data" novalidate>
           {% csrf_token %}
           <div class="col-sm-6  mt-3">
             <label for="validationServerUsername" class="form-label">Username</label>

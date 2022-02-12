@@ -33,6 +33,59 @@ def booking_details(request,user_id):
     else:
         return render(request, "reservation/login.html")
 
+def save_changes(request, user_id):
+    user = User.objects.get(id=user_id)
+    userProfiles = UserProfile.objects.get(id = user_id)
+    if request.method == "POST":
+
+
+        # username = request.POST.get("username")
+        # email = request.POST["email"]
+        # first_name = request.POST["first_name"]
+        # last_name = request.POST["last_name"]
+
+        #userProfile
+        # phone_no = request.POST.get('phone_no')
+        # nationality = request.POST["nationality"]
+        # location = request.POST["location"]
+        # # profile_img = request.FILES["profile_img"]
+        # profile_img = request.FILES.get('profile_img')
+
+        # Ensure password matches confirmation
+        # password = request.POST["password"]
+        # confirmation = request.POST["confirmation"]
+
+        # if password != confirmation:
+        #     messages.error(request, "Password Must Match")
+        #     return render(
+        #         request, "reservation/register.html", {
+        #             "username": username,
+        #             "email": email,
+        #             "first_name": first_name,
+        #             "last_name": last_name,
+        #             "role": role,
+        #             "phone_no": phone_no,
+        #             "nationality" : nationality,
+        #             "location":location
+        #         })
+
+        # user.username = username
+        # user.first_name = first_name
+        # user.last_name = last_name
+        # user.email = email
+        # user.password = password
+        user.save()
+
+        userProfiles.phone_no = request.POST.get("phone_no")
+        # userProfiles.nationality = nationality
+        # userProfiles.location = location
+        # userProfiles.profile_img = profile_img
+        userProfiles.save()
+        messages.success(request, "Updated Successfully!")
+        return HttpResponseRedirect(reverse('profile_details', args=(user_id,)))
+
+    else:
+        return HttpResponseRedirect(reverse('profile_details', args=(user_id,)))
 
 def book_room(request,user_id):
     if request.method == "POST":

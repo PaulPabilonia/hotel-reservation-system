@@ -11,7 +11,7 @@ class User(AbstractUser):
 class UserProfile(models.Model):
     #default = None means that it will store none if the user decides not to fill the data.
     client = models.ForeignKey(User, on_delete=models.CASCADE,related_name="userprofile_user",default=None)
-    phone_no = models.CharField(max_length=200)
+    phone_no = models.CharField(max_length=200,default=False, null=True,blank= True)
     nationality= models.CharField(max_length=200)
     location =  models.CharField(max_length=200)
     profile_img = models.ImageField(null=True, blank = True, upload_to = "images/")
