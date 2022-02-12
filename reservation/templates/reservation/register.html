@@ -32,7 +32,7 @@
           {% endfor %}
           {% endif %} -->
         {% include 'reservation/messages.html' %}
-        <form class="row g-3 needs-validation" action="{% url 'register' %}" method="GET" enctype="multipart/form-data" novalidate>
+        <form class="row g-3 needs-validation" action="{% url 'register' %}" method="POST" enctype="multipart/form-data" novalidate>
           {% csrf_token %}
           <div class="col-sm-6  mt-3">
             <label for="validationServerUsername" class="form-label">Username</label>
@@ -120,7 +120,7 @@
           <div class="col-sm-4 mt-3">
             <div class="form-group">
               <label for="exampleFormControlFile1">Choose Profile</label>
-              <input type="file" class="form-control-file" id="profile_image" name="profile_img"> 
+              <input class="form-control" type="file" id="formFile" name="profile_img"> 
             </div>
           </div>
 
