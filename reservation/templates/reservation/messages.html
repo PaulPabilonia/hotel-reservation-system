@@ -15,6 +15,22 @@
         $('#modal_success').modal('show');
     });
 </script>
+<!-- Success -->
+<div class="modal fade" id="modal_success" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header headercolorsuccess checkicon icon" href="#">
+                <img src="{% static './reservation/images/successfully.png' %}">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <h4>Great!</h4>
+                <p>{{ message }}</p>
+                <button class="btn btn btnsuccess" data-bs-dismiss="modal">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Modal -->
 <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -50,6 +66,23 @@
         $('#modal_error').modal('show');
     });
 </script>
+<!-- Error -->
+<!-- Modal -->
+<div class="modal fade" id="modal_error" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header headercolorerror checkicon icon" href="#"><img
+                    src="{% static './reservation/images/error.png' %}">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <h4>Ooops!</h4>
+                <p>{{ message }}</p>
+                <button class="btn btn btnerror" data-bs-dismiss="modal">Try again</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endif %}
 {% endfor %}
@@ -75,7 +108,7 @@
 
 <!-- Error -->
 <!-- Modal -->
-<div class="modal fade" id="modal_error" tabindex="-1" aria-hidden="true">
+<!-- <div class="modal fade" id="modal_error" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header headercolorerror checkicon icon" href="#"><img src="{% static './reservation/images/error.png' %}">
@@ -88,7 +121,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

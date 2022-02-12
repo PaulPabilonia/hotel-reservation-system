@@ -1,5 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap");
 
+/*--------------------------------------------------------------
+# messages modal
+--------------------------------------------------------------*/
+.headercolorsuccess{
+	background-color: #47C9A2;
+}
+.headercolorerror{
+	background-color: #E85E6C;
+}
+.checkicon img{
+	width: 95px;
+	margin-left: 40%;
+}
+.icon{
+	justify-content: center;
+	padding: 20px;
+}
+.btnsuccess{
+	background-color: #47C9A2;
+	color: #fff;
+}
+.btn-check:focus+.btn, .btn:focus {
+	box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.432);
+  }
+.btnerror{
+	background-color: #E85E6C;
+	color: #fff;
+}
+
 body{
     position: relative;
     font: 16px "Red Hat Display", sans-serif;
