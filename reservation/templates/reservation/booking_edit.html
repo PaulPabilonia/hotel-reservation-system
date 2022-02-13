@@ -1,0 +1,503 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Booking</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/static/reservation/assets/img/favicon.png" rel="icon">
+  <link href="/static/reservation/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/reservation/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/static/reservation/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/reservation/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/reservation/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/reservation/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/static/reservation/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/static/reservation/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- form  -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css"
+    rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script> -->
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+  <!-- Template Main CSS File -->
+  <link href="/static/reservation/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html">OnePage</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="/static/reservation/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto activeo" href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2> Booking Details </h2>
+          <ol>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li>Booking Details</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+
+      <div class="container w-100 mb-4">
+        {% include 'reservation/messages.html' %}
+        <form class="row  needs-validation" action="{% url 'update_booking' book.id %}" method="post" novalidate>
+          {% csrf_token %}
+          <div class="col-md w-100">
+            <div class="box w-100">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <input name="username" type="text" class="form-control" placeholder="Username"
+                      value="{{ book.client.username }}" required />
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input name="first_name" type="text" class="form-control" placeholder="First Name"
+                      value="{{ book.client.first_name }}" required />
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="last_name" class="form-label">Last Name</label>
+                    <input name="last_name" type="text" class="form-control" placeholder="Last Name"
+                      value="{{ book.client.last_name }}" required />
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Email</label>
+                    <input name="email" type="email" class="form-control" placeholder="Email" value="{{ book.client.email }}"
+                      required />
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Phone Number</label>
+                    <input name="phone_no" type="text" class="form-control" placeholder="Phone No"
+                      value="{{ book.user_profile.phone_no }}" required />
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Nationality</label>
+                    <input name="nationality" type="text" class="form-control" placeholder="Nationality"
+                      value="{{ book.user_profile.nationality }}" required />
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Location</label>
+                    <input name="location" type="text" class="form-control" placeholder="Location"
+                      value="{{ book.user_profile.location }}" required />
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Room Type</label>
+                    <select class="form-control" name="room_type" id="select" required>
+                      <option disabled selected value>--Select Room Type--</option>
+                      <option value="Boozeman">Boozeman</option>
+                      <option value="Glasgow">Glasgow</option>
+                      <option value="Miami">Miami</option>
+                      <option value="Savanna">Savanna</option>
+                      <option value="Tulum">Tulum</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Room Category</label>
+                    <select name="room_category" class="form-control" required>
+                      <option disabled selected value>--Select Room Category--</option>
+                      <option value="Standard">Standard</option>
+                      <option value="Deluxe">Deluxe</option>
+                      <option value="Premium">Premium</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Number of Adults</label>
+                    <input name="numAdults" type="number" class="form-control" placeholder="Number of Adults"
+                      value="{{ book.numAdults }}" required />
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Number Of Kids (0-17)</label>
+                    <input name="numKids" type="number" class="form-control" placeholder="Number of Kids (0-17)"
+                      value="{{ book.numKids }}" required />
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Check-in</label>
+                    <input class="form-control calendar" type="text" name="checkIn" placeholder="Check in Date"
+                      id="example1" value="{{ book.checkIn }}" autocomplete="off" required>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Check-out</label>
+                    <input class="form-control  calendar " name="checkOut" type="text" placeholder="Check Out Date"
+                      id="example2" value="{{ book.checkOut }}" autocomplete="off" required>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label">Mode of Payment</label>
+                    <select name="mop" class="form-control" required>
+                      <option disabled selected value>--Mode of Payment--</option>
+                      <option value="Cash">Cash</option>
+                      <option value="Online">Online</option>
+                      <option value="Card">Card</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="username" class="form-label text-white">Book Now</label>
+                    <input name="" type="submit" class="btn btn-primary" value="Update Booking" />
+
+                  </div>
+                </div>
+                <!-- <button type="button" id="Success" class="btn btn-color mt-10 mx-0 my-0" data-bs-toggle="modal"
+                  data-bs-target="#modal_success">
+                  Success
+                </button> -->
+
+                <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                  crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+                  integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+                  crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+                  integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+                  crossorigin="anonymous"></script> -->
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+
+                <div class="swiper-slide">
+                  <img src="/static/reservation/assets/img/portfolio/portfolio-1.jpg" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="/static/reservation/assets/img/portfolio/portfolio-2.jpg" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="/static/reservation/assets/img/portfolio/portfolio-3.jpg" alt="">
+                </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>User information</h3>
+              <ul>
+                <li><strong>Username: </strong>: {{ user.username }}</li>
+                <li><strong>Client</strong>: {{ user.first_name }} {{ user.last_name }}</li>
+                <li><strong>Client First joined</strong>: {{ user.date_joined }} </li>
+                <li><strong>Client Last Login</strong>: <a href="#">{{ user.last_login }}</a></li>
+              </ul>
+            </div>
+            <div class="portfolio-description">
+              <h2>This is an example of portfolio detail</h2>
+              <p>
+                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia.
+                Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia
+                accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt
+                eius.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Details Section -->
+
+
+  </main><!-- End #main -->
+
+
+  <!-- Success -->
+  <!-- <div class="modal fade" id="modal_success" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header headercolorsuccess checkicon icon" href="#">
+          <img  src="{% static './reservation/images/successfully.png' %}">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <h4>Great!</h4>
+          <p>Successfully Booked!</p>
+          <button class="btn btn btnsuccess" data-bs-dismiss="modal">Start Exploring</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+  <!-- Error -->
+  <!-- Modal -->
+  <div class="modal fade" id="modal_error" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header headercolorerror checkicon icon" href="#">
+          <img src="{% static './reservation/images/error.png' %}">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <h4>Ooops!</h4>
+          <p>Something went wrong. Please try again1111.</p>
+          <button class="btn btn btnerror" data-bs-dismiss="modal">Try again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- form script -->
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#example1').datepicker({
+        format: "dd/mm/yyyy"
+
+      });
+    });
+
+    $(document).ready(function () {
+      $('#example2').datepicker({
+        format: "dd/mm/yyyy"
+      });
+    });
+    $(document).ready(function () {
+      $('#closedd').click(function () {
+        $('#exampleModal').modal('hide');
+      });
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="{% static 'reservation/app.js' %}"></script>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>OnePage</h3>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br><br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Join Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>OnePage</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/ -->
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/static/reservation/assets/vendor/purecounter/purecounter.js"></script>
+  <script src="/static/reservation/assets/vendor/aos/aos.js"></script>
+  <script src="/static/reservation/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/reservation/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/static/reservation/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/static/reservation/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/static/reservation/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/static/reservation/assets/js/main.js"></script>
+
+</body>
+
+</html>

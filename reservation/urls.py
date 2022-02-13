@@ -14,7 +14,9 @@ urlpatterns = [
     path("book_room/<int:user_id>", views.book_room, name="book_room"),
     path("profile_details/<int:user_id>",views.profile_details, name="profile_details"),
     path("save_changes/<int:user_id>",views.save_changes, name="save_changes"),
+    path("update_booking/<int:user_id>",views.update_booking, name="update_booking"),
     path("profile_edit/<int:user_id>",views.profile_edit, name="profile_edit"),
+    path("booking_edit/<int:user_id>",views.booking_edit, name="booking_edit"),
     path("all_bookings", views.all_bookings, name="all_bookings"),
     path("all_users", views.all_users, name="all_users"),
     path("delete_user/<int:user_id>",views.delete_user,name="delete_user"),
@@ -23,4 +25,5 @@ urlpatterns = [
     path("cancel_booking/<int:user_id>",views.cancel_booking,name="cancel_booking"),
     path("retrieve_cancelled_bookings/<int:user_id>",views.retrieve_cancelled_bookings,name="retrieve_cancelled_bookings"),
     path("all_cancelled_bookings", views.all_cancelled_bookings, name= "all_cancelled_bookings"),
+    path("my_bookings",views.my_bookings,name="my_bookings"),
 ]

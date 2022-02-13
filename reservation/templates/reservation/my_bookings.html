@@ -1,4 +1,4 @@
-{% extends 'reservation/admin_layout.html' %}
+{% extends 'reservation/profile_layout.html' %}
 {% load static %}
 
 
@@ -7,8 +7,15 @@
 {% block body %}
 
 
-<h2>All Bookings:</h2>
-
+<h2>My Bookings:</h2>
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">My Bookings</li>
+  </ol>
+</nav>
+<!-- /Breadcrumb -->
 <table class="table">
   <thead class="thead-dark">
     <tr>

@@ -6,165 +6,158 @@
 
 <body>
   {% block body %}
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">My Profile</li>
+    </ol>
+  </nav>
+  <!-- /Breadcrumb -->
 
-  <main id="main">
+  <div class="row gutters-sm">
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex flex-column align-items-center text-center">
+            {% if userProfile.profile_img %}
+            <img src="{{ userProfile.profile_img.url }}" alt="Admin" class="rounded-circle" width="150">
+            {% else %}
+            <img src="{% static './reservation/images/default_profile.png' %}" alt="Admin" class="rounded-circle"
+              width="150">
+            {% endif %}
+            <div class="mt-3">
+              <h4>{{ userProfile.client.first_name }} {{ userProfile.client.last_name }}</h4>
+              {% if user.is_staff %}
+              <p class="text-secondary mb-1">ADMIN</p>
+              {% else %}
+              <p class="text-secondary mb-1">Guest</p>
+              {% endif %}
 
-    <section class="inner-page">
-      <div class="container">
-        <div class="main-body">
-
-          <!-- Breadcrumb -->
-          <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">My Profile</li>
-            </ol>
-          </nav>
-          <!-- /Breadcrumb -->
-
-          <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex flex-column align-items-center text-center">
-                    {% if userProfile.profile_img %}
-                    <img src="{{ userProfile.profile_img.url }}" alt="Admin" class="rounded-circle" width="150">
-                    {% else %}
-                    <img src="{% static './reservation/images/default_profile.png' %}" alt="Admin"
-                      class="rounded-circle" width="150">
-                    {% endif %}
-                    <div class="mt-3">
-                      <h4>{{ userProfile.client.first_name }} {{ userProfile.client.last_name }}</h4>
-                      {% if user.is_staff %}
-                      <p class="text-secondary mb-1">ADMIN</p>
-                      {% else %}
-                      <p class="text-secondary mb-1">Guest</p>
-                      {% endif %}
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="col-md-8">
-              <div class="card mb-3">
-                <div class="card-body">
-                  {% include 'reservation/messages.html' %}
-
-                  <form class="row g-3 needs-validation" action="{% url 'save_changes' userProfile.id %}" method="POST"
-                    enctype="multipart/form-data" novalidate>
-                    {% csrf_token %}
-                    <div class="row pt-3">
-                      <div class="col-sm-2 pt-2">
-                        <span class="">Username</span>
-                      </div>
-                      <div class="col-sm-4 text-secondary">
-                        <input type="text" name="username" class="form-control p-2 text-secondary"
-                          value="{{ userProfile.client.username}}">
-                      </div>
-                      <div class="col-sm-2 pt-2">
-                        <span class="">Email</span>
-                      </div>
-                      <div class="col-sm-4 text-secondary">
-                        <input type="email" name="email" class="form-control p-2 text-secondary"
-                          value="{{ userProfile.client.email }}">
-                      </div>
-
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-2 pt-2">
-                        <span class="">First Name</span>
-                      </div>
-                      <div class="col-sm-4 text-secondary">
-                        <input type="text" name="first_name" class="form-control p-2 text-secondary"
-                          value="{{ userProfile.client.first_name }}">
-                      </div>
-                      <div class="col-sm-2 pt-2">
-                        <span class="">Last Name</span>
-                      </div>
-                      <div class="col-sm-4 text-secondary">
-                        <input type="text" name="last_name" class="form-control p-2 text-secondary"
-                          value="{{ userProfile.client.last_name }}">
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-2 pt-2">
-                        <span class="">Phone No.</span>
-                      </div>
-                      <div class="col-sm-4 text-secondary">
-                        <input type="text" name="phone_no" class="form-control p-2 text-secondary" id="phone_id"
-                          value="{{ userProfile.phone_no }}">
-                      </div>
-                      <div class="col-sm-2 pt-2">
-                        <span class="">Nationality</span>
-                      </div>
-                      <div class="col-sm-4 text-secondary">
-                        <input type="text" name="nationality" class="form-control p-2 text-secondary"
-                          id="nationality_id" value="{{userProfile.nationality }}">
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-2 pt-2">
-                        <span class="">Password</span>
-                      </div>
-                      <div class="col-sm-4 text-secondary">
-                        <input type="password" name="password" class="form-control p-2 text-secondary"
-                          value="{{ userProfile.client.password }}">
-                      </div>
-                      <div class="col-sm-2 pt-2">
-                        <span class="">Confirm Password</span>
-                      </div>
-                      <div class="col-sm-4 text-secondary">
-                        <input type="password" name="confirmation" class="form-control p-2 text-secondary"
-                          value="{{ userProfile.client.password }}">
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-2 pt-2">
-                        <span class="">Location</span>
-                      </div>
-                      <div class="col-sm-4 text-secondary">
-                        <input type="text" name="location" class="form-control p-2 text-secondary"
-                          value="{{ userProfile.location }}">
-                      </div>
-                      <div class="col-sm-2 pt-2">
-                        <span class="">Role</span>
-                      </div>
-                      <div class="col-sm-4 text-secondary">
-                        {% if userProfile.client.is_staff %}
-                        <input type="text" name="role" class="form-control p-2 text-secondary" value="ADMIN" disabled>
-                        {% else %}
-                        <input type="text" name="role" class="form-control p-2 text-secondary" value="GUEST" disabled>
-                        {% endif %}
-
-                      </div>
-                    </div>
-
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-8">
-                        <input class="form-control" type="file" id="formFile" name="profile_img">
-                      </div>
-
-                      <div class="col-sm-4" id="save">
-                        <input class="btn btn-primary " type="submit" value="Save Changes">
-                      </div>
-
-                    </div>
-                  </form>
-
-                </div>
-              </div>
             </div>
           </div>
+        </div>
+      </div>
 
-          {% endblock %}
+    </div>
+
+    <div class="col-md-8">
+      <div class="card mb-3">
+        <div class="card-body">
+          {% include 'reservation/messages.html' %}
+
+          <form class="row g-3 needs-validation" action="{% url 'save_changes' userProfile.id %}" method="POST"
+            enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            <div class="row pt-3">
+              <div class="col-sm-2 pt-2">
+                <span class="">Username</span>
+              </div>
+              <div class="col-sm-4 text-secondary">
+                <input type="text" name="username" class="form-control p-2 text-secondary"
+                  value="{{ userProfile.client.username}}">
+              </div>
+              <div class="col-sm-2 pt-2">
+                <span class="">Email</span>
+              </div>
+              <div class="col-sm-4 text-secondary">
+                <input type="email" name="email" class="form-control p-2 text-secondary"
+                  value="{{ userProfile.client.email }}">
+              </div>
+
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-2 pt-2">
+                <span class="">First Name</span>
+              </div>
+              <div class="col-sm-4 text-secondary">
+                <input type="text" name="first_name" class="form-control p-2 text-secondary"
+                  value="{{ userProfile.client.first_name }}">
+              </div>
+              <div class="col-sm-2 pt-2">
+                <span class="">Last Name</span>
+              </div>
+              <div class="col-sm-4 text-secondary">
+                <input type="text" name="last_name" class="form-control p-2 text-secondary"
+                  value="{{ userProfile.client.last_name }}">
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-2 pt-2">
+                <span class="">Phone No.</span>
+              </div>
+              <div class="col-sm-4 text-secondary">
+                <input type="text" name="phone_no" class="form-control p-2 text-secondary" id="phone_id"
+                  value="{{ userProfile.phone_no }}">
+              </div>
+              <div class="col-sm-2 pt-2">
+                <span class="">Nationality</span>
+              </div>
+              <div class="col-sm-4 text-secondary">
+                <input type="text" name="nationality" class="form-control p-2 text-secondary" id="nationality_id"
+                  value="{{userProfile.nationality }}">
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-2 pt-2">
+                <span class="">Password</span>
+              </div>
+              <div class="col-sm-4 text-secondary">
+                <input type="password" name="password" class="form-control p-2 text-secondary"
+                  value="{{ userProfile.client.password }}">
+              </div>
+              <div class="col-sm-2 pt-2">
+                <span class="">Confirm Password</span>
+              </div>
+              <div class="col-sm-4 text-secondary">
+                <input type="password" name="confirmation" class="form-control p-2 text-secondary"
+                  value="{{ userProfile.client.password }}">
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-2 pt-2">
+                <span class="">Location</span>
+              </div>
+              <div class="col-sm-4 text-secondary">
+                <input type="text" name="location" class="form-control p-2 text-secondary"
+                  value="{{ userProfile.location }}">
+              </div>
+              <div class="col-sm-2 pt-2">
+                <span class="">Role</span>
+              </div>
+              <div class="col-sm-4 text-secondary">
+                {% if userProfile.client.is_staff %}
+                <input type="text" name="role" class="form-control p-2 text-secondary" value="ADMIN" disabled>
+                {% else %}
+                <input type="text" name="role" class="form-control p-2 text-secondary" value="GUEST" disabled>
+                {% endif %}
+
+              </div>
+            </div>
+
+            <hr>
+            <div class="row">
+              <div class="col-sm-8">
+                <input class="form-control" type="file" id="formFile" name="profile_img">
+              </div>
+
+              <div class="col-sm-4" id="save">
+                <input class="btn btn-primary " type="submit" value="Save Changes">
+              </div>
+
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
 
 </body>
 

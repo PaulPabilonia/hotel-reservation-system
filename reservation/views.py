@@ -1,3 +1,4 @@
+from http import client
 import json
 import os
 from django.contrib.auth import authenticate, login, logout
@@ -23,22 +24,31 @@ def profile_details(request, user_id):
         'userProfile': userProfiles,
     })
 
+def my_bookings(request):
+    user = request.user
+    bookings = Booking.objects.filter(client=user)
+    return render(request, "reservation/my_bookings.html",
+                  {'bookings': bookings})
+
 
 def all_bookings(request):
-    bookings = Booking.objects.filter(is_cancelled = False)
+    bookings = Booking.objects.filter(is_cancelled=False)
     return render(request, "reservation/all_bookings.html",
                   {'bookings': bookings})
+
 
 def all_cancelled_bookings(request):
     bookings = Booking.objects.filter(is_cancelled=True)
     return render(request, "reservation/cancelled_bookings.html",
                   {'bookings': bookings})
 
-def retrieve_cancelled_bookings(request,user_id):
+
+def retrieve_cancelled_bookings(request, user_id):
     user = Booking.objects.get(pk=user_id)
     user.is_cancelled = False
     user.save()
     return HttpResponseRedirect(reverse('all_bookings'))
+
 
 def cancel_booking(request, user_id):
     user = Booking.objects.get(pk=user_id)
@@ -46,6 +56,7 @@ def cancel_booking(request, user_id):
     user.save()
 
     return HttpResponseRedirect(reverse('all_bookings'))
+
 
 def all_users(request):
     all_profile = UserProfile.objects.filter(is_deleted=False)
@@ -58,11 +69,13 @@ def all_deleted_users(request):
     return render(request, "reservation/deleted_users.html",
                   {'all_profile': all_profile})
 
-def retrieve_deleted_users(request,user_id):
+
+def retrieve_deleted_users(request, user_id):
     user = UserProfile.objects.get(pk=user_id)
     user.is_deleted = False
     user.save()
     return HttpResponseRedirect(reverse('all_users'))
+
 
 def delete_user(request, user_id):
     user = UserProfile.objects.get(pk=user_id)
@@ -70,8 +83,6 @@ def delete_user(request, user_id):
     user.save()
 
     return HttpResponseRedirect(reverse('all_users'))
-
-
 
 
 def booking_details(request, user_id):
@@ -115,10 +126,44 @@ def save_changes(request, user_id):
             reverse('profile_details', args=(user_id, )))
 
 
+def update_booking(request, user_id):
+    book = Booking.objects.get(pk=user_id)
+    if request.method == "POST":
+
+        book.client.username = request.POST.get("username")
+        book.client.email = request.POST.get("email")
+        book.client.first_name = request.POST.get("first_name")
+        book.client.last_name = request.POST.get("last_name")
+
+        book.user_profile.nationality = request.POST.get("nationality")
+        book.user_profile.phone_no = request.POST.get("phone_no")
+        book.user_profile.location = request.POST.get("location")
+
+        book.room_type = request.POST.get("room_type")
+        book.room_category = request.POST.get("room_category")
+        book.numAdults = request.POST.get("numAdults")
+        book.numKids = request.POST.get("numKids")
+        book.checkIn = request.POST.get("checkIn")
+        book.checkOut = request.POST.get("checkOut")
+        book.mop = request.POST.get("mop")
+        book.save()
+        messages.success(request, "Book Updated Successfully!")
+        return HttpResponseRedirect(reverse('booking_edit', args=(user_id, )))
+    else:
+        return HttpResponseRedirect(reverse('booking_edit', args=(user_id, )))
+
+
 def profile_edit(request, user_id):
     userProfiles = UserProfile.objects.get(pk=user_id)
     return render(request, "reservation/profile_edit.html", {
         'userProfile': userProfiles,
+    })
+
+
+def booking_edit(request, user_id):
+    book = Booking.objects.get(pk=user_id)
+    return render(request, "reservation/booking_edit.html", {
+        'book': book,
     })
 
 
