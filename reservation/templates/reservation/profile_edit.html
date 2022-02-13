@@ -34,7 +34,7 @@
                       class="rounded-circle" width="150">
                     {% endif %}
                     <div class="mt-3">
-                      <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                      <h4>{{ userProfile.client.first_name }} {{ userProfile.client.last_name }}</h4>
                       {% if user.is_staff %}
                       <p class="text-secondary mb-1">ADMIN</p>
                       {% else %}
@@ -62,14 +62,14 @@
                       </div>
                       <div class="col-sm-4 text-secondary">
                         <input type="text" name="username" class="form-control p-2 text-secondary"
-                          value="{{ user.username}}">
+                          value="{{ userProfile.client.username}}">
                       </div>
                       <div class="col-sm-2 pt-2">
                         <span class="">Email</span>
                       </div>
                       <div class="col-sm-4 text-secondary">
                         <input type="email" name="email" class="form-control p-2 text-secondary"
-                          value="{{ user.email }}">
+                          value="{{ userProfile.client.email }}">
                       </div>
 
                     </div>
@@ -80,14 +80,14 @@
                       </div>
                       <div class="col-sm-4 text-secondary">
                         <input type="text" name="first_name" class="form-control p-2 text-secondary"
-                          value="{{ user.first_name }}">
+                          value="{{ userProfile.client.first_name }}">
                       </div>
                       <div class="col-sm-2 pt-2">
                         <span class="">Last Name</span>
                       </div>
                       <div class="col-sm-4 text-secondary">
                         <input type="text" name="last_name" class="form-control p-2 text-secondary"
-                          value="{{ user.last_name }}">
+                          value="{{ userProfile.client.last_name }}">
                       </div>
                     </div>
                     <hr>
@@ -114,14 +114,14 @@
                       </div>
                       <div class="col-sm-4 text-secondary">
                         <input type="password" name="password" class="form-control p-2 text-secondary"
-                          value="{{ user.password }}">
+                          value="{{ userProfile.client.password }}">
                       </div>
                       <div class="col-sm-2 pt-2">
                         <span class="">Confirm Password</span>
                       </div>
                       <div class="col-sm-4 text-secondary">
                         <input type="password" name="confirmation" class="form-control p-2 text-secondary"
-                          value="{{ user.password }}">
+                          value="{{ userProfile.client.password }}">
                       </div>
                     </div>
                     <hr>
@@ -137,7 +137,7 @@
                         <span class="">Role</span>
                       </div>
                       <div class="col-sm-4 text-secondary">
-                        {% if user.is_staff %}
+                        {% if userProfile.client.is_staff %}
                         <input type="text" name="role" class="form-control p-2 text-secondary" value="ADMIN" disabled>
                         {% else %}
                         <input type="text" name="role" class="form-control p-2 text-secondary" value="GUEST" disabled>

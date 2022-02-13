@@ -126,8 +126,8 @@
                       class="rounded-circle" width="150">
                     {% endif %}
                     <div class="mt-3">
-                      <h4>{{ user.first_name }} {{ user.last_name }}</h4>
-                      {% if user.is_staff %}
+                      <h4>{{ userProfile.client.first_name }} {{ userProfile.client.last_name }}</h4>
+                      {% if userProfile.client.is_staff %}
                       <p class="text-secondary mb-1">ADMIN</p>
                       {% else %}
                       <p class="text-secondary mb-1">Guest</p>
@@ -207,14 +207,14 @@
                       </div>
                       <div class="col-sm-4 text-secondary">
                         <input type="text" name="username" class="form-control p-2 text-secondary" id="username"
-                          disabled value="{{ user.username}}">
+                          disabled value="{{ userProfile.client.username}}">
                       </div>
                       <div class="col-sm-2 pt-2">
                         <span class="">Email</span>
                       </div>
                       <div class="col-sm-4 text-secondary">
                         <input type="email" name="email" class="form-control p-2 text-secondary" id="email" disabled
-                          value="{{ user.email }}">
+                          value="{{ userProfile.client.email }}">
                       </div>
 
                     </div>
@@ -225,14 +225,14 @@
                       </div>
                       <div class="col-sm-4 text-secondary">
                         <input type="text" name="first_name" class="form-control p-2 text-secondary" id="first_name"
-                          disabled value="{{ user.first_name }}">
+                          disabled value="{{ userProfile.client.first_name }}">
                       </div>
                       <div class="col-sm-2 pt-2">
                         <span class="">Last Name</span>
                       </div>
                       <div class="col-sm-4 text-secondary">
                         <input type="text" name="last_name" class="form-control p-2 text-secondary" id="last_name"
-                          disabled value="{{ user.last_name }}">
+                          disabled value="{{ userProfile.client.last_name }}">
                       </div>
                     </div>
                     <hr>
@@ -258,14 +258,14 @@
                       </div>
                       <div class="col-sm-4 text-secondary">
                         <input type="password" name="password" class="form-control p-2 text-secondary" id="password"
-                          disabled value="{{ user.password }}">
+                          disabled value="{{ userProfile.client.password }}">
                       </div>
                       <div class="col-sm-2 pt-2">
                         <span class="">Confirm Password</span>
                       </div>
                       <div class="col-sm-4 text-secondary">
                         <input type="password" name="confirmation" class="form-control p-2 text-secondary"
-                          id="confirmation" disabled value="{{ user.password }}">
+                          id="confirmation" disabled value="{{ userProfile.client.password }}">
                       </div>
                     </div>
                     <hr>
@@ -281,7 +281,7 @@
                         <span class="">Role</span>
                       </div>
                       <div class="col-sm-4 text-secondary">
-                        {% if user.is_staff %}
+                        {% if userProfile.client.is_staff %}
                         <input type="text" name="role" class="form-control p-2 text-secondary" value="ADMIN" disabled>
                         {% else %}
                         <input type="text" name="role" class="form-control p-2 text-secondary" value="GUEST" disabled>
@@ -299,7 +299,7 @@
                       </div> -->
 
                       <div class="col-sm-4 " id="edit">
-                        <a  href="{% url 'profile_edit' user.id %}" class="btn btn-primary ">Edit</a>
+                        <a  href="{% url 'profile_edit' userProfile.client.id %}" class="btn btn-primary ">Edit</a>
                       </div>
                       <!-- <div class="col-sm-4" style="display:none;" id="save">
                         <input class="btn btn-primary " type="submit" onclick="saving()" value="Save Changes">

@@ -23,6 +23,17 @@ def profile_details(request,user_id):
         'userProfile': userProfiles,
     })
 
+def all_bookings(request):
+    bookings = Booking.objects.all()
+    return render(request, "reservation/all_bookings.html",{
+        'bookings': bookings
+    })
+
+def all_users(request):
+    all_profile = UserProfile.objects.all()
+    return render(request, "reservation/all_users.html",{
+        'all_profile': all_profile
+    })
 
 def booking_details(request,user_id):
     if request.user.is_authenticated:

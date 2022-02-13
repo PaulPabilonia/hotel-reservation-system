@@ -1,0 +1,42 @@
+{% extends 'reservation/admin_layout.html' %}
+{% load static %}
+
+
+{% block title %} Bookings {% endblock %}
+
+{% block body %}
+
+
+<h2>All Bookings:</h2>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone No.</th>
+      <th scope="col">Nationality</th>
+      <th scope="col">Location</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for profile in all_profile %}
+    <tr>
+      <th scope="row">{{ profile.client.username }}</th>
+      <td>{{profile.client.first_name}} {{profile.client.last_name}}</td>
+      <td>{{profile.client.email}}</td>
+      <td>{{profile.phone_no}}</td>
+      <td>{{profile.nationality}}</td>
+      <td>{{profile.location}}</td>
+      <td>
+        <a href="#" class="btn btn-danger">Delete</a>
+        <a href="{% url 'profile_edit' profile.id %}" class="btn btn-primary">Edit</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
