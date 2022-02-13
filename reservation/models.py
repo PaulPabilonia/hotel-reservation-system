@@ -15,6 +15,7 @@ class UserProfile(models.Model):
     nationality= models.TextField(max_length=200, null=True)
     location =  models.TextField(max_length=200, null=True)
     profile_img = models.ImageField(null=True, blank = True, upload_to = "images/")
+    is_deleted = models.BooleanField(default=False, null=True,blank= True)
     #auto_now_add = a start date you first add a UserProfile
     created_at = models.DateTimeField(auto_now_add=True)
     #auto_now = the date when you modifed/update a UserProfile
@@ -34,7 +35,7 @@ class Booking(models.Model):
     mop = models.TextField(max_length=100)
     room_category = models.TextField(max_length=200,default=None)
     room_type = models.TextField(max_length=100,default=None)
-    # is_cancelled = models.BooleanField(default=False, null=True,blank= True)
+    is_cancelled = models.BooleanField(default=False, null=True,blank= True)
     #auto_now_add = a start date you first add a listings
     created_at = models.DateTimeField(auto_now_add=True)
     #auto_now = the date when you modifed/update a listings

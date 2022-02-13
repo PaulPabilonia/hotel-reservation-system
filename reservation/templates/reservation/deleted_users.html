@@ -31,8 +31,7 @@
       <td>{{profile.nationality}}</td>
       <td>{{profile.location}}</td>
       <td>
-        <a href="{% url 'delete_user' profile.id %}" class="btn btn-danger">Delete</a>
-        <a href="{% url 'profile_edit' profile.id %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'retrieve_deleted_users' profile.id %}" class="btn btn-success">Retrieve</a>
       </td>
     </tr>
     {% endfor %}

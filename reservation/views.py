@@ -17,34 +17,74 @@ def index(request):
     return render(request, "reservation/index.html")
 
 
-def profile_details(request,user_id):
+def profile_details(request, user_id):
     userProfiles = UserProfile.objects.get(pk=user_id)
-    return render(request, "reservation/profile_details.html",{
+    return render(request, "reservation/profile_details.html", {
         'userProfile': userProfiles,
     })
 
+
 def all_bookings(request):
-    bookings = Booking.objects.all()
-    return render(request, "reservation/all_bookings.html",{
-        'bookings': bookings
-    })
+    bookings = Booking.objects.filter(is_cancelled = False)
+    return render(request, "reservation/all_bookings.html",
+                  {'bookings': bookings})
+
+def all_cancelled_bookings(request):
+    bookings = Booking.objects.filter(is_cancelled=True)
+    return render(request, "reservation/cancelled_bookings.html",
+                  {'bookings': bookings})
+
+def retrieve_cancelled_bookings(request,user_id):
+    user = Booking.objects.get(pk=user_id)
+    user.is_cancelled = False
+    user.save()
+    return HttpResponseRedirect(reverse('all_bookings'))
+
+def cancel_booking(request, user_id):
+    user = Booking.objects.get(pk=user_id)
+    user.is_cancelled = True
+    user.save()
+
+    return HttpResponseRedirect(reverse('all_bookings'))
 
 def all_users(request):
-    all_profile = UserProfile.objects.all()
-    return render(request, "reservation/all_users.html",{
-        'all_profile': all_profile
-    })
+    all_profile = UserProfile.objects.filter(is_deleted=False)
+    return render(request, "reservation/all_users.html",
+                  {'all_profile': all_profile})
 
-def booking_details(request,user_id):
+
+def all_deleted_users(request):
+    all_profile = UserProfile.objects.filter(is_deleted=True)
+    return render(request, "reservation/deleted_users.html",
+                  {'all_profile': all_profile})
+
+def retrieve_deleted_users(request,user_id):
+    user = UserProfile.objects.get(pk=user_id)
+    user.is_deleted = False
+    user.save()
+    return HttpResponseRedirect(reverse('all_users'))
+
+def delete_user(request, user_id):
+    user = UserProfile.objects.get(pk=user_id)
+    user.is_deleted = True
+    user.save()
+
+    return HttpResponseRedirect(reverse('all_users'))
+
+
+
+
+def booking_details(request, user_id):
     if request.user.is_authenticated:
         userProfiles = UserProfile.objects.get(pk=user_id)
-        return render(request, "reservation/booking_details.html",{
+        return render(request, "reservation/booking_details.html", {
             'userProfile': userProfiles,
         })
 
     # Everyone else is prompted to sign in
     else:
         return render(request, "reservation/login.html")
+
 
 def save_changes(request, user_id):
     user = User.objects.get(pk=user_id)
@@ -59,7 +99,7 @@ def save_changes(request, user_id):
         user.last_name = request.POST.get("last_name")
         user.save()
 
-        if len(request.FILES)!= 0:
+        if len(request.FILES) != 0:
             if len(user_profile.profile_img) > 0:
                 os.remove(user_profile.profile_img.path)
             user_profile.profile_img = request.FILES.get('profile_img')
@@ -68,17 +108,21 @@ def save_changes(request, user_id):
         user_profile.location = request.POST.get("location")
         user_profile.save()
         messages.success(request, "Profile Updated Successfully!")
-        return HttpResponseRedirect(reverse('profile_details', args=(user_id,)))
+        return HttpResponseRedirect(
+            reverse('profile_details', args=(user_id, )))
     else:
-        return HttpResponseRedirect(reverse('profile_details', args=(user_id,)))
+        return HttpResponseRedirect(
+            reverse('profile_details', args=(user_id, )))
 
-def profile_edit(request,user_id):
+
+def profile_edit(request, user_id):
     userProfiles = UserProfile.objects.get(pk=user_id)
-    return render(request, "reservation/profile_edit.html",{
+    return render(request, "reservation/profile_edit.html", {
         'userProfile': userProfiles,
     })
 
-def book_room(request,user_id):
+
+def book_room(request, user_id):
     if request.method == "POST":
         user = request.user
         user_profile = UserProfile.objects.get(pk=user_id)
@@ -97,7 +141,7 @@ def book_room(request,user_id):
         try:
 
             book = Booking(client=user,
-                           user_profile = user_profile,
+                           user_profile=user_profile,
                            checkIn=checkIn,
                            checkOut=checkOut,
                            numAdults=numAdults,
@@ -109,7 +153,9 @@ def book_room(request,user_id):
         except IntegrityError:
             messages.error(request, "Booking Failed!")
             return render(
-                request, "reservation/booking_details.html", {
+                request,
+                "reservation/booking_details.html",
+                {
                     "checkIn": checkIn,
                     "checkOut": checkOut,
                     # "phone_no": phone_no,
@@ -123,7 +169,8 @@ def book_room(request,user_id):
                 })
         messages.success(request, "Boooked Successfully!")
         #after booking it will stay at the booking_details page
-        return HttpResponseRedirect(reverse('booking_details', args=(user_id,)))
+        return HttpResponseRedirect(
+            reverse('booking_details', args=(user_id, )))
     else:
         return render(request, "reservation/index.html")
 
@@ -185,8 +232,8 @@ def register(request):
                     "last_name": last_name,
                     "role": role,
                     "phone_no": phone_no,
-                    "nationality" : nationality,
-                    "location":location
+                    "nationality": nationality,
+                    "location": location
                 })
         # Attempt to create new user
         try:
@@ -213,8 +260,8 @@ def register(request):
                     "last_name": last_name,
                     "role": role,
                     "phone_no": phone_no,
-                    "nationality" : nationality,
-                    "location":location
+                    "nationality": nationality,
+                    "location": location
                 })
         messages.success(request,
                          "Registered Successfully! You can now Log in")

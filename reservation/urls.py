@@ -17,4 +17,10 @@ urlpatterns = [
     path("profile_edit/<int:user_id>",views.profile_edit, name="profile_edit"),
     path("all_bookings", views.all_bookings, name="all_bookings"),
     path("all_users", views.all_users, name="all_users"),
+    path("delete_user/<int:user_id>",views.delete_user,name="delete_user"),
+    path("retrieve_deleted_users/<int:user_id>",views.retrieve_deleted_users,name="retrieve_deleted_users"),
+    path("all_deleted_users", views.all_deleted_users, name= "all_deleted_users"),
+    path("cancel_booking/<int:user_id>",views.cancel_booking,name="cancel_booking"),
+    path("retrieve_cancelled_bookings/<int:user_id>",views.retrieve_cancelled_bookings,name="retrieve_cancelled_bookings"),
+    path("all_cancelled_bookings", views.all_cancelled_bookings, name= "all_cancelled_bookings"),
 ]

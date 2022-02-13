@@ -33,8 +33,7 @@
       <td>{{ book.numAdults }}</td>
       <td>{{ book.numKids }}</td>
       <td>
-        <a href="#" class="btn btn-danger">Retrieve</a>
-        <a href="#" class="btn btn-primary">Edit</a>
+        <a href="{% url 'retrieve_cancelled_bookings' book.id %}" class="btn btn-success">Retrieve</a>
       </td>
     </tr>
     {% endfor %}
