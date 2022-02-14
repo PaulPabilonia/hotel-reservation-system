@@ -234,9 +234,9 @@ def login_view(request):
             return HttpResponseRedirect(reverse("index"))
         else:
             messages.error(request, "Invalid username and/or password!")
-            return HttpResponseRedirect(reverse('login'))
+            return HttpResponseRedirect(reverse('index'))
     else:
-        return render(request, "reservation/login.html")
+        return render(request, "reservation/index.html")
 
 
 def logout_view(request):

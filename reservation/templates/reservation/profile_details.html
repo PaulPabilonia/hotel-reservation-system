@@ -44,45 +44,44 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
-
-      <h1 class="logo"><a href="index.html">OnePage</a></h1>
+      <h1 class="logo"><a href="{% url 'index' %}">La Mirage</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="/static/reservation/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="index.html" class="logo"><img src="static/reservation/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto o" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto active" href="{% url 'index' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'index' %}">About</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'index' %}">Services</a></li>
+          <li><a class="nav-link scrollto o" href="{% url 'index' %}">Hotel Rooms</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'index' %}">Team</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'index' %}">Special Offers</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'index' %}">Contact</a></li>
+          <li class="dropdown"><a href="#"><span>Settings</span> <i class="fa fa-cogs" style="font-size: 1em;"
+                aria-hidden="true"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              {% if user.is_authenticated and user.is_staff%}
+              <li><a class="nav-link scrollto" href="{% url 'all_bookings' %}">Admin Page</a></li>
+              {% endif %}
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
+              <li><a href="{% url 'profile_details' user.id %}">My Profile</a></li>
+              {% endif %}
+              <li><a href="{% url 'logout' %}">logout</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+          {% if user.is_authenticated %}
+          {% else %}
+          <li><a type="button" data-toggle="modal" data-target="#loginModal">Login</a></li>
+          <li><a href="{% url 'register' %}">Sign up</a></li>
+          {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
+      <!-- 
+      <i class='bx bx-menu menu-icon' style="font-size: 1.73em; color: blue;"></i> -->
     </div>
   </header><!-- End Header -->
-
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -198,8 +197,8 @@
               <div class="card mb-3">
                 <div class="card-body">
                   {% include 'reservation/messages.html' %}
-                  <form class="row g-3 needs-validation" action="{% url 'save_changes' userProfile.id %}" method="POST" enctype="multipart/form-data"
-                    novalidate>
+                  <form class="row g-3 needs-validation" action="{% url 'save_changes' userProfile.id %}" method="POST"
+                    enctype="multipart/form-data" novalidate>
                     {% csrf_token %}
                     <div class="row pt-3">
                       <div class="col-sm-2 pt-2">
@@ -241,14 +240,15 @@
                         <span class="">Phone No.</span>
                       </div>
                       <div class="col-sm-4 text-secondary">
-                        <input type="text" name="phone_no" class="form-control p-2 text-secondary" id = "phone_id" disabled
-                          value="{{ userProfile.phone_no }}">
+                        <input type="text" name="phone_no" class="form-control p-2 text-secondary" id="phone_id"
+                          disabled value="{{ userProfile.phone_no }}">
                       </div>
                       <div class="col-sm-2 pt-2">
                         <span class="">Nationality</span>
                       </div>
                       <div class="col-sm-4 text-secondary">
-                        <input type="text" name="nationality" class="form-control p-2 text-secondary" id = "nationality_id"  disabled value="{{userProfile.nationality }}">
+                        <input type="text" name="nationality" class="form-control p-2 text-secondary"
+                          id="nationality_id" disabled value="{{userProfile.nationality }}">
                       </div>
                     </div>
                     <hr>
@@ -299,7 +299,7 @@
                       </div> -->
 
                       <div class="col-sm-4 " id="edit">
-                        <a  href="{% url 'profile_edit' userProfile.client.id %}" class="btn btn-primary ">Edit</a>
+                        <a href="{% url 'profile_edit' userProfile.client.id %}" class="btn btn-primary ">Edit</a>
                       </div>
                       <!-- <div class="col-sm-4" style="display:none;" id="save">
                         <input class="btn btn-primary " type="submit" onclick="saving()" value="Save Changes">
@@ -389,7 +389,7 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
-    <div class="footer-top">
+    <!-- <div class="footer-top">
       <div class="container">
         <div class="row">
 
@@ -436,7 +436,7 @@
 
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="container d-md-flex py-4">
 
