@@ -231,6 +231,7 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
+            messages.success(request, "Login Successfully!")
             return HttpResponseRedirect(reverse("index"))
         else:
             messages.error(request, "Invalid username and/or password!")
