@@ -51,11 +51,11 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
       <h1 class="logo"><a href="{% url 'index' %}"><img src="static/reservation/assets/img/LogoFinal1.svg" alt="LOGO"
-            style="height: 50px;" class="img-fluid"></a></h1>
-      {% if user.is_authenticated %}
+            style="height: 60px;" class="img-fluid"></a></h1>
+      <!-- {% if user.is_authenticated %}
       <a href="{% url 'profile_details' user.id %}"><i class="fa fa-user-circle-o" aria-hidden="true"
           style="font-size: 1em;"></i><span>{{ user.username }}</span></a>
-      {% endif %}
+      {% endif %} -->
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="static/reservation/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -68,6 +68,15 @@
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="#pricing">Special Offers</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+      <!-- 
+      <i class='bx bx-menu menu-icon' style="font-size: 1.73em; color: blue;"></i> -->
+      <nav id="navbar" class="navbar">
+        <ul>
           <li class="dropdown"><a href="#"><span>Settings</span> <i class="fa fa-cogs" style="font-size: 1em;"
                 aria-hidden="true"></i></a>
             <ul>
@@ -86,11 +95,13 @@
           <li><a type="button" data-toggle="modal" data-target="#loginModal">Login</a></li>
           <li><a href="{% url 'register' %}">Sign up</a></li>
           {% endif %}
+          {% if user.is_authenticated %}
+          <a href="{% url 'profile_details' user.id %}"><i class="fa fa-user-circle-o" aria-hidden="true"
+              style="font-size: 1em;"></i><span>{{ user.username }}</span></a>
+          {% endif %}
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-      <!-- 
-      <i class='bx bx-menu menu-icon' style="font-size: 1.73em; color: blue;"></i> -->
+      </nav>
+
     </div>
   </header><!-- End Header -->
 
@@ -517,11 +528,11 @@
 
         <div class="row">
 
-          <div class="col-lg-6 video-box align-self-baseline" data-aos="fade-right" data-aos-delay="100">
+          <!-- <div class="col-lg-6 video-box align-self-baseline" data-aos="fade-right" data-aos-delay="100">
             <img src="static/reservation/assets/img/about-video.jpg" class="img-fluid" alt="">
             <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4" data-vbtype="video"
               data-autoplay="true"></a>
-          </div>
+          </div> -->
 
           <div class="col-lg-6 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
             <h3>La Mirage Inn and Suites Hotel Facilities and Services.</h3>
@@ -721,6 +732,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
+
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                   The best hotel I've ever had the pleasure of staying in. It's a stunning structure, and it only gets
@@ -731,6 +743,7 @@
                 <img src="static/reservation/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
                 <h3>Saul Goodman</h3>
                 <h4>Ceo &amp; Founder</h4>
+
               </div>
             </div><!-- End testimonial item -->
 
@@ -799,6 +812,76 @@
 
       </div>
     </section><!-- End Testimonials Section -->
+
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Special Offers</h2>
+          <p>Can’t get enough with our hotel amenities and services? La Mirage Inn and Suites also provides special
+            offers exclusively with our beloved guests. Become a member to get exciting offers and discounts for a more
+            convenient and comfortable stay.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-im" data-aos-delay="100">
+            <div class="box">
+              <h3>Free</h3>
+              <h4><sup>$</sup>0<span> / month</span></h4>
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li class="na">Pharetra massa</li>
+                <li class="na">Massa ultricies mi</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">
+            <div class="box featured">
+              <h3>Business</h3>
+              <h4><sup>$</sup>19<span> / month</span></h4>
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li>Pharetra massa</li>
+                <li class="na">Massa ultricies mi</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="100">
+            <div class="box">
+              <h3>Developer</h3>
+              <h4><sup>$</sup>29<span> / month</span></h4>
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li>Pharetra massa</li>
+                <li>Massa ultricies mi</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Pricing Section -->
     <!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
       <div class="container" data-aos="fade-up">
@@ -907,74 +990,7 @@
       </div>
     </section><!-- End Team Section -->
 
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>Special Offers</h2>
-          <p>Can’t get enough with our hotel amenities and services? La Mirage Inn and Suites also provides special
-            offers exclusively with our beloved guests. Become a member to get exciting offers and discounts for a more
-            convenient and comfortable stay.</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6" data-aos="zoom-im" data-aos-delay="100">
-            <div class="box">
-              <h3>Free</h3>
-              <h4><sup>$</sup>0<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li class="na">Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">
-            <div class="box featured">
-              <h3>Business</h3>
-              <h4><sup>$</sup>19<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="100">
-            <div class="box">
-              <h3>Developer</h3>
-              <h4><sup>$</sup>29<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Pricing Section -->
 
     <!-- ======= Frequently Asked Questions Section ======= -->
     <section id="faq" class="faq section-bg">
@@ -1271,7 +1287,9 @@
         </div>
         <div class="modal-body">
           <div class="form-title text-center">
-            <h4>Login</h4>
+            <!-- <h4>Login</h4> -->
+            <h1 class="logo"><a href="{% url 'index' %}"><img src="static/reservation/assets/img/LogoFinal1.svg"
+                  alt="LOGO" style="height: 100px;" class="img-fluid"></a></h1>
           </div>
           <div class="d-flex flex-column text-center">
 

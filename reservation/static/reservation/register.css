@@ -5,11 +5,11 @@
 }
 
 body{
-  padding: 50px 50px 0px 50px;
+  padding: 10px 50px 0px 50px;
   font-family: sans-serif;
   position: relative;
   font: 16px "Red Hat Display", sans-serif;
-  background-color: #E0EAFF; 
+  background-image: url('/static/reservation/assets/img/hero-bg.jpg') 
 }
 /* .nav-link{
   color: #030303!important;
