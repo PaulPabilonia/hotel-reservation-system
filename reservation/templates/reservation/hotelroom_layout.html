@@ -31,7 +31,6 @@
 
   <!-- Template Main CSS File -->
   <link href="/static/reservation/assets/css/style.css" rel="stylesheet">
-  <link href="/static/reservation/style.css" rel="stylesheet">
   <!-- 
   Todo: 
     1. Make a model and input. 
@@ -45,7 +44,8 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo"><a href="{% url 'index' %}"><img src="/static/reservation/assets/img/LogoFinal1.svg" alt="LOGO" style="height: 50px;" class="img-fluid"></a></h1>
+      <h1 class="logo"><a href="{% url 'index' %}"><img src="static/reservation/assets/img/LogoFinal1.svg" alt="LOGO"
+            style="height: 50px;" class="img-fluid"></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="static/reservation/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -54,7 +54,15 @@
           <li><a class="nav-link scrollto active" href="{% url 'index' %}">Home</a></li>
           <li><a class="nav-link scrollto" href="{% url 'index' %}">About</a></li>
           <li><a class="nav-link scrollto" href="{% url 'index' %}">Services</a></li>
-          <li><a class="nav-link scrollto o" href="{% url 'index' %}">Hotel Rooms</a></li>
+          <li class="dropdown"><a href="#"><span>Hotel Rooms</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'bozeman_room' %}">Bozeman</a></li>
+              <li><a href="{% url 'glasgow_room' %}">Glasgow</a></li>
+              <li><a href="{% url 'miami_room' %}">Miami</a></li>
+              <li><a href="{% url 'savanna_room' %}">Savanna</a></li>
+              <li><a href="{% url 'tulum_room' %}">Tulum</a></li>
+            </ul>
+          </li>
           <li><a class="nav-link scrollto" href="{% url 'index' %}">Team</a></li>
           <li><a class="nav-link scrollto" href="{% url 'index' %}">Special Offers</a></li>
           <li><a class="nav-link scrollto" href="{% url 'index' %}">Contact</a></li>
@@ -86,35 +94,9 @@
 
   </div>
   </header><!-- End Header -->
-  <main id="main">
-    <section class="inner-page">
-      <div class="container">
-        <div class="main-body">
+  {% block body %}
 
-          <!-- Breadcrumb -->
-          <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Admin Page</li>
-              <li class="breadcrumb-item"><a href="{% url 'all_users' %}">All Users</a></li>
-              <li class="breadcrumb-item"><a href="{% url 'all_bookings' %}">All Bookings</a></li>
-              <li class="breadcrumb-item"><a href="{% url 'all_cancelled_bookings' %}">Cancelled Bookings</a></li>
-              <li class="breadcrumb-item"><a href="{% url 'all_deleted_users' %}">Deleted Users</a></li>
-            </ol>
-          </nav>
-
-          {% include 'reservation/messages.html' %}
-          {% block body %}
-
-
-
-          {% endblock %}
-
-        </div>
-      </div>
-    </section>
-  </main>
-
+  {% endblock %}
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -196,60 +178,6 @@
       class="bi bi-arrow-up-short"></i></a>
   {% block script %}
 
-  <!-- Vendor JS Files -->
-  <script src="/static/reservation/assets/vendor/purecounter/purecounter.js"></script>
-  <script src="/static/reservation/assets/vendor/aos/aos.js"></script>
-  <script src="/static/reservation/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/static/reservation/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="/static/reservation/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="/static/reservation/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="/static/reservation/assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="/static/reservation/assets/js/main.js"></script>
-  <script>
-    //Hide edit and save changes
-    const editing = () => {
-      var x = document.getElementById("save");
-      var y = document.getElementById("edit");
-      if (x.style.display === "none") {
-        x.style.display = "block";
-        y.style.display = "none";
-        document.getElementById("username").disabled = false;
-        document.getElementById("email").disabled = false;
-        document.getElementById("first_name").disabled = false;
-        document.getElementById("last_name").disabled = false;
-        document.getElementById("password").disabled = false;
-        document.getElementById("confirmation").disabled = false;
-        document.getElementById("phone_no").disabled = false;
-        document.getElementById("nationality").disabled = false;
-        document.getElementById("location").disabled = false;
-        console.log('block')
-      } else {
-        x.style.display = "none";
-      }
-    }
-    const saving = () => {
-      var x = document.getElementById("edit");
-      var y = document.getElementById("save");
-      if (x.style.display === "none") {
-        x.style.display = "block";
-        y.style.display = "none";
-        document.getElementById("username").disabled = true;
-        document.getElementById("email").disabled = true;
-        document.getElementById("first_name").disabled = true;
-        document.getElementById("last_name").disabled = true;
-        document.getElementById("password").disabled = true;
-        document.getElementById("confirmation").disabled = true;
-        document.getElementById("phone_no").disabled = true;
-        document.getElementById("nationality").disabled = true;
-        document.getElementById("location").disabled = true;
-        console.log('block')
-      } else {
-        x.style.display = "none";
-      }
-    }  
-  </script>
   {% endblock %}
 </body>
 

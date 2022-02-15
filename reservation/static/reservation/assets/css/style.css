@@ -1,4 +1,32 @@
 /*--------------------------------------------------------------
+# double check
+--------------------------------------------------------------*/
+.roomdetails .details ul {
+  list-style: none;
+  padding: 0;
+}
+.roomdetails .details ul li {
+  padding-left: 28px;
+  position: relative;
+}
+
+.roomdetails .details ul i {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 20px;
+  color: #2487ce;
+  line-height: 1;
+}
+.roomdetails .details h2{
+  font-size: 26px;
+  font-weight: 700;
+  
+}
+.roomdetails .details p:last-child {
+  margin-bottom: 0;
+}
+/*--------------------------------------------------------------
 # login modal
 --------------------------------------------------------------*/
 @media (min-width: 576px) {

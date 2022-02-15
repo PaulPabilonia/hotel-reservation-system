@@ -1,0 +1,98 @@
+{% extends 'reservation/hotelroom_layout.html' %}
+{% load static %}
+
+
+{% block title %} Boozeman Room {% endblock %}
+
+  {% block body %}
+  <main id="main">
+    <section class="inner-page">
+      <div class="container">
+        <div class="main-body">
+
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Glasgow</li>
+              <li class="breadcrumb-item"><a href ="#/glasglow/standard" id="standard">Standard</a></li>
+              <li class="breadcrumb-item"><a href ="#/glasglow/deluxe" id="deluxe">Deluxe</a></li>
+              <li class="breadcrumb-item"><a href ="#/glasglow/premium" id="premium">Premium</a></li>
+            </ol>
+          </nav>
+
+         
+          <!-- hotel rooms descriptions -->
+          <div class="row gy-4">
+
+            <div class="col-lg-8">
+              <div class="portfolio-details-slider swiper">
+                <div id="hotel-images" class="swiper-wrapper align-items-center">
+
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div id="roomdetails" class="roomdetails portfolio-info">
+                <div class="details section" data-aos="fade-up">
+                  <h3 id="hotel-title"></h3>
+                  <p id="hotel-content" class="text-justify">
+                  </p>
+                  <ul id="hotel-amenities">
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+    </section>
+    </div>
+    <div id="roomdetails" class="roomdetails">
+      <div class="container" data-aos="fade-up">
+        <h5><strong>Hotel Room Policies</strong></h5>
+        <h7><strong>Meals</strong></h7>
+        <p class="text-justify">
+          Breakfast is included in all room rate
+        </p>
+
+        <h7><strong>Cancellation</strong></h7>
+        <p>
+          If cancelled 48 hours before the date of arrival, no fee will be charged.
+          If cancelled later the equivalent of 1 night’s stay will be charged. In case of no-show, the total price
+          of
+          the reservation will be charged.
+        </p>
+
+        <h7><strong>Prepayment</strong></h7>
+        <p>
+          No deposit will be charged, however in order to validate your Credit Card, the amount equivalent to 1
+          Night
+          Stay will be blocked in your account for approximately 1 week.
+        </p>
+      </div>
+    </div><!-- End room Details Section -->
+  </main>
+  
+  {% endblock %}
+
+  {% block script %}
+
+  <!-- Vendor JS Files -->
+  <script src="/static/reservation/assets/vendor/purecounter/purecounter.js"></script>
+  <script src="/static/reservation/assets/vendor/aos/aos.js"></script>
+  <script src="/static/reservation/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/reservation/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/static/reservation/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/static/reservation/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/static/reservation/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- <script src="static/reservation/glasgow_room.js"></script> -->
+  <!-- Template Main JS File -->
+  <script src="static/reservation/glasgow_room.js"></script>
+  <script src="/static/reservation/assets/js/main.js"></script>
+  
+  {% endblock %}

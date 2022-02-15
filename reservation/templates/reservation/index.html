@@ -50,7 +50,12 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo"><a href="{% url 'index' %}"><img src="static/reservation/assets/img/LogoFinal1.svg" alt="LOGO" style="height: 50px;" class="img-fluid"></a></h1>
+      <h1 class="logo"><a href="{% url 'index' %}"><img src="static/reservation/assets/img/LogoFinal1.svg" alt="LOGO"
+            style="height: 50px;" class="img-fluid"></a></h1>
+      {% if user.is_authenticated %}
+      <a href="{% url 'profile_details' user.id %}"><i class="fa fa-user-circle-o" aria-hidden="true"
+          style="font-size: 1em;"></i><span>{{ user.username }}</span></a>
+      {% endif %}
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="static/reservation/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -179,15 +184,15 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-bozeman">
             <div class="portfolio-wrap">
-              <img src="static/reservation/assets/img/HotelRooms/BozemanStandard/BozemanStandard1.jpg" class="img-fluid" alt="">
+              <img src="static/reservation/assets/img/HotelRooms/BozemanStandard/BozemanStandard1.jpg" class="img-fluid"
+                alt="">
               <div class="portfolio-info">
                 <h4>Bozeman</h4>
                 <p>Standard</p>
                 <div class="portfolio-links">
                   <a href="static/reservation/assets/img/HotelRooms/BozemanStandard/BozemanStandard1.jpg"
-                    data-gallery="portfolioGallery" class="portfolio-lightbox" ><i
-                      class="bx bx-plus"></i></a>
-                  <a href="bozeman-standard.html" title="More Details"><i class="bx bx-link"></i></a>
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'bozeman_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -195,14 +200,15 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-bozeman">
             <div class="portfolio-wrap">
-              <img src="static/reservation/assets/img/HotelRooms/BozemanDeluxe/BozemanDeluxe1.jpg" class="img-fluid" alt="">
+              <img src="static/reservation/assets/img/HotelRooms/BozemanDeluxe/BozemanDeluxe1.jpg" class="img-fluid"
+                alt="">
               <div class="portfolio-info">
                 <h4>Bozeman</h4>
                 <p>Deluxe</p>
                 <div class="portfolio-links">
-                  <a href="static/reservation/assets/img/HotelRooms/BozemanDeluxe/BozemanDeluxe1.jpg" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox" ><i class="bx bx-plus"></i></a>
-                  <a href="bozeman-deluxe.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="static/reservation/assets/img/HotelRooms/BozemanDeluxe/BozemanDeluxe1.jpg"
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'bozeman_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -210,14 +216,15 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-bozeman">
             <div class="portfolio-wrap">
-              <img src="static/reservation/assets/img/HotelRooms/BozemanPremium/BozemanPremium1.jpg" class="img-fluid" alt="">
+              <img src="static/reservation/assets/img/HotelRooms/BozemanPremium/BozemanPremium1.jpg" class="img-fluid"
+                alt="">
               <div class="portfolio-info">
                 <h4>Bozeman</h4>
                 <p>Premium</p>
                 <div class="portfolio-links">
-                  <a href="static/reservation/assets/img/HotelRooms/BozemanPremium/BozemanPremium1.jpg" data-gallery="portfolioGallery3"
-                    class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                  <a href="bozeman-premium.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="static/reservation/assets/img/HotelRooms/BozemanPremium/BozemanPremium1.jpg"
+                    data-gallery="portfolioGallery3" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'bozeman_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -225,15 +232,15 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-glasgow">
             <div class="portfolio-wrap">
-              <img src="static/reservation/assets/img/HotelRooms/GlasgowStandard/GlasgowStandard1.jpg" class="img-fluid" alt="">
+              <img src="static/reservation/assets/img/HotelRooms/GlasgowStandard/GlasgowStandard1.jpg" class="img-fluid"
+                alt="">
               <div class="portfolio-info">
                 <h4>Glasgow</h4>
                 <p>Standard</p>
                 <div class="portfolio-links">
                   <a href="static/reservation/assets/img/HotelRooms/GlasgowStandard/GlasgowStandard1.jpg"
-                    data-gallery="portfolioGallery" class="portfolio-lightbox" ><i
-                      class="bx bx-plus"></i></a>
-                  <a href="glasgow-standard.html" title="More Details"><i class="bx bx-link"></i></a>
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'glasgow_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -241,14 +248,15 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-glasgow">
             <div class="portfolio-wrap">
-              <img src="static/reservation/assets/img/HotelRooms/GlasgowDeluxe/GlasgowDeluxe1.jpg" class="img-fluid" alt="">
+              <img src="static/reservation/assets/img/HotelRooms/GlasgowDeluxe/GlasgowDeluxe1.jpg" class="img-fluid"
+                alt="">
               <div class="portfolio-info">
                 <h4>Glasgow</h4>
                 <p>Deluxe</p>
                 <div class="portfolio-links">
-                  <a href="static/reservation/assets/img/HotelRooms/GlasgowDeluxe/GlasgowDeluxe1.jpg" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox" ><i class="bx bx-plus"></i></a>
-                  <a href="glasgow-deluxe.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="static/reservation/assets/img/HotelRooms/GlasgowDeluxe/GlasgowDeluxe1.jpg"
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'glasgow_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -256,14 +264,15 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-glasgow">
             <div class="portfolio-wrap">
-              <img src="static/reservation/assets/img/HotelRooms/GlasgowPremium/GlasgowPremium1.jpg" class="img-fluid" alt="">
+              <img src="static/reservation/assets/img/HotelRooms/GlasgowPremium/GlasgowPremium1.jpg" class="img-fluid"
+                alt="">
               <div class="portfolio-info">
                 <h4>Glasgow</h4>
                 <p>Premium</p>
                 <div class="portfolio-links">
-                  <a href="static/reservation/assets/img/HotelRooms/GlasgowPremium/GlasgowPremium1.jpg" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox" ><i class="bx bx-plus"></i></a>
-                  <a href="glasgow-premium.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="static/reservation/assets/img/HotelRooms/GlasgowPremium/GlasgowPremium1.jpg"
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'glasgow_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -271,14 +280,15 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-miami">
             <div class="portfolio-wrap">
-              <img src="static/reservation/assets/img/HotelRooms/MiamiStandard/MiamiStandard1.jpg" class="img-fluid" alt="">
+              <img src="static/reservation/assets/img/HotelRooms/MiamiStandard/MiamiStandard1.jpg" class="img-fluid"
+                alt="">
               <div class="portfolio-info">
                 <h4>Miami</h4>
                 <p>Standard</p>
                 <div class="portfolio-links">
-                  <a href="static/reservation/assets/img/HotelRooms/MiamiStandard/MiamiStandard1.jpg" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox" ><i class="bx bx-plus"></i></a>
-                  <a href="miami-standard.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="static/reservation/assets/img/HotelRooms/MiamiStandard/MiamiStandard1.jpg"
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'miami_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -291,9 +301,9 @@
                 <h4>Miami</h4>
                 <p>Deluxe</p>
                 <div class="portfolio-links">
-                  <a href="static/reservation/assets/img/HotelRooms/MiamiDeluxe/MiamiDeluxe1.jpg" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox" ><i class="bx bx-plus"></i></a>
-                  <a href="miami-deluxe.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="static/reservation/assets/img/HotelRooms/MiamiDeluxe/MiamiDeluxe1.jpg"
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'miami_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -301,14 +311,15 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-miami">
             <div class="portfolio-wrap">
-              <img src="static/reservation/assets/img/HotelRooms/MiamiPremium/MiamiPremium1.jpg" class="img-fluid" alt="">
+              <img src="static/reservation/assets/img/HotelRooms/MiamiPremium/MiamiPremium1.jpg" class="img-fluid"
+                alt="">
               <div class="portfolio-info">
                 <h4>Miami</h4>
                 <p>Premium</p>
                 <div class="portfolio-links">
-                  <a href="static/reservation/assets/img/HotelRooms/MiamiPremium/MiamiPremium1.jpg" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox" ><i class="bx bx-plus"></i></a>
-                  <a href="miami-premium.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="static/reservation/assets/img/HotelRooms/MiamiPremium/MiamiPremium1.jpg"
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'miami_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -316,15 +327,15 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-savanna">
             <div class="portfolio-wrap">
-              <img src="static/reservation/assets/img/HotelRooms/SavannaStandard/SavannaStandard1.jpg" class="img-fluid" alt="">
+              <img src="static/reservation/assets/img/HotelRooms/SavannaStandard/SavannaStandard1.jpg" class="img-fluid"
+                alt="">
               <div class="portfolio-info">
                 <h4>Savanna</h4>
                 <p>Standard</p>
                 <div class="portfolio-links">
                   <a href="static/reservation/assets/img/HotelRooms/SavannaStandard/SavannaStandard1.jpg"
-                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                      class="bx bx-plus"></i></a>
-                  <a href="savanna-standard.html" title="More Details"><i class="bx bx-link"></i></a>
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'savanna_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -332,14 +343,15 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-savanna">
             <div class="portfolio-wrap">
-              <img src="static/reservation/assets/img/HotelRooms/SavannaDeluxe/SavannaDeluxe1.jpg" class="img-fluid" alt="">
+              <img src="static/reservation/assets/img/HotelRooms/SavannaDeluxe/SavannaDeluxe1.jpg" class="img-fluid"
+                alt="">
               <div class="portfolio-info">
                 <h4>Savanna</h4>
                 <p>Deluxe</p>
                 <div class="portfolio-links">
-                  <a href="static/reservation/assets/img/HotelRooms/SavannaDeluxe/SavannaDeluxe1.jpg" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                  <a href="savanna-deluxe.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="static/reservation/assets/img/HotelRooms/SavannaDeluxe/SavannaDeluxe1.jpg"
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'savanna_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -347,14 +359,15 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-savanna">
             <div class="portfolio-wrap">
-              <img src="static/reservation/assets/img/HotelRooms/SavannaPremium/SavannaPremium1.jpg" class="img-fluid" alt="">
+              <img src="static/reservation/assets/img/HotelRooms/SavannaPremium/SavannaPremium1.jpg" class="img-fluid"
+                alt="">
               <div class="portfolio-info">
                 <h4>Savanna</h4>
                 <p>Premium</p>
                 <div class="portfolio-links">
-                  <a href="static/reservation/assets/img/HotelRooms/SavannaPremium/SavannaPremium1.jpg" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                  <a href="savanna-premium.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="static/reservation/assets/img/HotelRooms/SavannaPremium/SavannaPremium1.jpg"
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'savanna_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -362,14 +375,15 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-tulum">
             <div class="portfolio-wrap">
-              <img src="static/reservation/assets/img/HotelRooms/TulumStandard/TulumStandard1.jpg" class="img-fluid" alt="">
+              <img src="static/reservation/assets/img/HotelRooms/TulumStandard/TulumStandard1.jpg" class="img-fluid"
+                alt="">
               <div class="portfolio-info">
                 <h4>Tulum</h4>
                 <p>Standard</p>
                 <div class="portfolio-links">
-                  <a href="static/reservation/assets/img/HotelRooms/TulumStandard/TulumStandard1.jpg" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                  <a href="tulum-standard.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="static/reservation/assets/img/HotelRooms/TulumStandard/TulumStandard1.jpg"
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'tulum_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -382,9 +396,9 @@
                 <h4>Tulum</h4>
                 <p>Deluxe</p>
                 <div class="portfolio-links">
-                  <a href="static/reservation/assets/img/HotelRooms/TulumDeluxe/TulumDeluxe1.jpg" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                  <a href="tulum-deluxe.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="static/reservation/assets/img/HotelRooms/TulumDeluxe/TulumDeluxe1.jpg"
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'tulum_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -392,14 +406,15 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-tulum">
             <div class="portfolio-wrap">
-              <img src="static/reservation/assets/img/HotelRooms/TulumPremium/TulumPremium1.jpg" class="img-fluid" alt="">
+              <img src="static/reservation/assets/img/HotelRooms/TulumPremium/TulumPremium1.jpg" class="img-fluid"
+                alt="">
               <div class="portfolio-info">
                 <h4>Tulum</h4>
                 <p>Premium</p>
                 <div class="portfolio-links">
-                  <a href="static/reservation/assets/img/HotelRooms/TulumPremium/TulumPremium1.jpg" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                  <a href="tulum-premium.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="static/reservation/assets/img/HotelRooms/TulumPremium/TulumPremium1.jpg"
+                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'tulum_room' %}" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>

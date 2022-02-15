@@ -18,6 +18,21 @@ def index(request):
     return render(request, "reservation/index.html")
 
 
+def glasgow_room(request):
+    return render(request, "reservation/glasgow_room.html")
+
+def bozeman_room(request):
+    return render(request, "reservation/bozeman_room.html")
+
+def miami_room(request):
+    return render(request, "reservation/miami_room.html")
+
+def savanna_room(request):
+    return render(request, "reservation/savanna_room.html")
+
+def tulum_room(request):
+    return render(request, "reservation/tulum_room.html")
+
 def profile_details(request, user_id):
     userProfiles = UserProfile.objects.get(pk=user_id)
     return render(request, "reservation/profile_details.html", {

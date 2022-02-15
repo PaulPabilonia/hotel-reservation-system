@@ -26,4 +26,9 @@ urlpatterns = [
     path("retrieve_cancelled_bookings/<int:user_id>",views.retrieve_cancelled_bookings,name="retrieve_cancelled_bookings"),
     path("all_cancelled_bookings", views.all_cancelled_bookings, name= "all_cancelled_bookings"),
     path("my_bookings",views.my_bookings,name="my_bookings"),
+    path("glasgow_room",views.glasgow_room,name="glasgow_room"),
+    path("bozeman_room",views.bozeman_room,name="bozeman_room"),
+    path("miami_room",views.miami_room,name="miami_room"),
+    path("savanna_room",views.savanna_room,name="savanna_room"),
+    path("tulum_room",views.tulum_room,name="tulum_room"),
 ]
