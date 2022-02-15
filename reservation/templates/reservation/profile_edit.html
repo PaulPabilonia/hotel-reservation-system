@@ -28,7 +28,7 @@
             {% endif %}
             <div class="mt-3">
               <h4>{{ userProfile.client.first_name }} {{ userProfile.client.last_name }}</h4>
-              {% if user.is_staff %}
+              {% if userProfile.is_staff %}
               <p class="text-secondary mb-1">ADMIN</p>
               {% else %}
               <p class="text-secondary mb-1">Guest</p>

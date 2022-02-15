@@ -11,11 +11,11 @@ class User(AbstractUser):
 class UserProfile(models.Model):
     #default = None means that it will store none if the user decides not to fill the data.
     client = models.ForeignKey(User, on_delete=models.CASCADE,related_name="userprofile_user",default=None)
-    phone_no = models.TextField(max_length=200, null=True)
-    nationality= models.TextField(max_length=200, null=True)
-    location =  models.TextField(max_length=200, null=True)
+    phone_no = models.CharField(max_length=200, null=True)
+    nationality= models.CharField(max_length=200, null=True)
+    location =  models.CharField(max_length=200, null=True)
     profile_img = models.ImageField(null=True, blank = True, upload_to = "images/")
-    is_deleted = models.BooleanField(default=False, null=True,blank= True)
+    is_deleted = models.BooleanField(default=False,blank= True)
     #auto_now_add = a start date you first add a UserProfile
     created_at = models.DateTimeField(auto_now_add=True)
     #auto_now = the date when you modifed/update a UserProfile
@@ -28,14 +28,14 @@ class Booking(models.Model):
     #default = None means that it will store none if the user decides not to fill the data.
     client = models.ForeignKey(User, on_delete=models.CASCADE,related_name="booking",default=None)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE,related_name="booking_profile",default=None)
-    checkIn = models.TextField(max_length=100)
-    checkOut = models.TextField(max_length=100)
+    checkIn = models.CharField(max_length=100)
+    checkOut = models.CharField(max_length=100)
     numAdults = models.IntegerField(default=0)
     numKids = models.IntegerField(default=0)
-    mop = models.TextField(max_length=100)
-    room_category = models.TextField(max_length=200,default=None)
-    room_type = models.TextField(max_length=100,default=None)
-    is_cancelled = models.BooleanField(default=False, null=True,blank= True)
+    mop = models.CharField(max_length=200)
+    room_category = models.CharField(max_length=200,default=None)
+    room_type = models.CharField(max_length=200,default=None)
+    is_cancelled = models.BooleanField(default=False,blank= True)
     #auto_now_add = a start date you first add a listings
     created_at = models.DateTimeField(auto_now_add=True)
     #auto_now = the date when you modifed/update a listings

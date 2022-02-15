@@ -110,10 +110,10 @@ def save_changes(request, user_id):
         user.last_name = request.POST.get("last_name")
         user.save()
 
-        if len(request.FILES) != 0:
-            if len(user_profile.profile_img) > 0:
-                os.remove(user_profile.profile_img.path)
-            user_profile.profile_img = request.FILES.get('profile_img')
+        # if len(request.FILES) != 0:
+        #     if len(user_profile.profile_img) > 0:
+        #         os.remove(user_profile.profile_img.path)
+        user_profile.profile_img = request.FILES.get('profile_img')
         user_profile.nationality = request.POST.get("nationality")
         user_profile.phone_no = request.POST.get("phone_no")
         user_profile.location = request.POST.get("location")
