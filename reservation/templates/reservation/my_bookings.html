@@ -16,36 +16,38 @@
   </ol>
 </nav>
 <!-- /Breadcrumb -->
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Username</th>
-      <th scope="col">Name</th>
-      <th scope="col">Room</th>
-      <th scope="col">Check-In</th>
-      <th scope="col">Check-Out</th>
-      <th scope="col">Adults</th>
-      <th scope="col">Kids</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for book in bookings %}
-    <tr>
-      <th scope="row">{{ book.client.username }}</th>
-      <td>{{book.client.first_name}} {{book.client.last_name}}</td>
-      <td>{{ book.room_type }} ({{ book.room_category }})</td>
-      <td>{{ book.checkIn }}</td>
-      <td>{{ book.checkOut }}</td>
-      <td>{{ book.numAdults }}</td>
-      <td>{{ book.numKids }}</td>
-      <td>
-        <a href="{% url 'cancel_booking' book.id %}" class="btn btn-danger">Cancel</a>
-        <a href="{% url 'booking_edit' book.id %}" class="btn btn-primary">Edit</a>
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<div class="main-body" style="overflow-x: auto;">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Name</th>
+        <th scope="col">Room</th>
+        <th scope="col">Check-In</th>
+        <th scope="col">Check-Out</th>
+        <th scope="col">Adults</th>
+        <th scope="col">Kids</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in bookings %}
+      <tr>
+        <th scope="row">{{ book.client.username }}</th>
+        <td>{{book.client.first_name}} {{book.client.last_name}}</td>
+        <td>{{ book.room_type }} ({{ book.room_category }})</td>
+        <td>{{ book.checkIn }}</td>
+        <td>{{ book.checkOut }}</td>
+        <td>{{ book.numAdults }}</td>
+        <td>{{ book.numKids }}</td>
+        <td>
+          <a href="{% url 'cancel_booking' book.id %}" class="btn btn-danger">Cancel</a>
+          <a href="{% url 'booking_edit' book.id %}" class="btn btn-primary">Edit</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
+</div>
 {% endblock %}
