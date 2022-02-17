@@ -11,7 +11,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="/static/reservation/assets/img/favicon.png" rel="icon">
+  <link href="/static/reservation/assets/img/singlelogo.svg" rel="icon">
   <link href="/static/reservation/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -53,25 +53,43 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a href="{% url 'index' %}"><img src="/static/reservation/assets/img/singlelogobold.svg"
+            alt="LOGO" style="height: 60px;" class="img-fluid"></a></h1>
       <h1 class="logo"><a href="{% url 'index' %}">La Mirage</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="static/reservation/assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto o" href="#portfolio">Hotel Rooms</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a class="nav-link scrollto" href="#pricing">Special Offers</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'index' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'index' %}">About</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'index' %}">Services</a></li>
+          <li class="dropdown"><a href="#"><span>Hotel Rooms</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'bozeman_room' %}">Bozeman</a></li>
+              <li><a href="{% url 'glasgow_room' %}">Glasgow</a></li>
+              <li><a href="{% url 'miami_room' %}">Miami</a></li>
+              <li><a href="{% url 'savanna_room' %}">Savanna</a></li>
+              <li><a href="{% url 'tulum_room' %}">Tulum</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="{% url 'index' %}">Team</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'index' %}">Special Offers</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'index' %}">Contact</a></li>
           <li class="dropdown"><a href="#"><span>Settings</span> <i class="fa fa-cogs" style="font-size: 1em;"
                 aria-hidden="true"></i></a>
             <ul>
               {% if user.is_authenticated and user.is_staff%}
               <li><a class="nav-link scrollto" href="{% url 'all_bookings' %}">Admin Page</a></li>
               {% endif %}
+              <!-- {% if user.is_authenticated %}
+          <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
+          <li><a href="{% url 'profile_details' user.id %}">My Profile</a></li>
+          {% endif %}
+          <li><a href="{% url 'logout' %}">logout</a></li> -->
+            </ul>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="dropdown"><a href="{% url 'profile_details' user.id %}">{{ user.username }}<i
+                class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 1em;"></i></a>
+            <ul>
               {% if user.is_authenticated %}
               <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
               <li><a href="{% url 'profile_details' user.id %}">My Profile</a></li>
@@ -79,6 +97,7 @@
               <li><a href="{% url 'logout' %}">logout</a></li>
             </ul>
           </li>
+          {% endif %}
           {% if user.is_authenticated %}
           {% else %}
           <li><a type="button" data-toggle="modal" data-target="#loginModal">Login</a></li>
@@ -150,8 +169,8 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="username" class="form-label">Email</label>
-                    <input name="email" type="email" class="form-control" placeholder="Email" value="{{ book.client.email }}"
-                      required />
+                    <input name="email" type="email" class="form-control" placeholder="Email"
+                      value="{{ book.client.email }}" required />
                   </div>
                 </div>
 
