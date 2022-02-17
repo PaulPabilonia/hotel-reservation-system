@@ -78,20 +78,28 @@
             <div class="modal-body text-center">
                 <h4>Ooops!</h4>
                 <p>{{ message }}</p>
-                <button class="btn btn btnerror" id= "try_again"data-bs-dismiss="modal">Try again</button>
+                <button class="btn btn btnerror" id= "try_again"data-bs-dismiss="modal" >Try again</button>
             </div>
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-      $('#try_again').click(function () {
-         $('#loginModal').modal('show');
-      });
-    });
+
+
+<!-- <script type="text/javascript">
+    // $(document).ready(function () {
+    //   $('#try_again').click(function () {
+    //      $('#loginModal').modal('show');
+    //   });
+    // });
+    // $(document).ready(function () {
+    //   $('#try_again_signup').click(function () {
+    //      $('#signModal').modal('show');
+    //   });
+    // });
     $(document).ready(function () {
       $('#x_button').click(function () {
          $('#loginModal').modal('hide');
+         console.log("button x click")
       });
     });
     //   $('#loginModal').modal('show');
@@ -99,7 +107,7 @@
     //     $('[data-toggle="tooltip"]').tooltip()
     //   })
     // });
-  </script>
+  </script> -->
 {% endif %}
 {% endfor %}
 {% endif %}

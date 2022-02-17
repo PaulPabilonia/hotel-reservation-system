@@ -286,7 +286,7 @@ def register(request):
         if password != confirmation:
             messages.error(request, "Password Must Match")
             return render(
-                request, "reservation/register.html", {
+                request, "reservation/index.html", {
                     "username": username,
                     "email": email,
                     "first_name": first_name,
@@ -314,7 +314,7 @@ def register(request):
         except IntegrityError:
             messages.error(request, "Username Already taken!")
             return render(
-                request, "reservation/register.html", {
+                request, "reservation/index.html", {
                     "username": username,
                     "email": email,
                     "first_name": first_name,
@@ -326,6 +326,6 @@ def register(request):
                 })
         messages.success(request,
                          "Registered Successfully! You can now Log in")
-        return HttpResponseRedirect(reverse('register'))
+        return HttpResponseRedirect(reverse('index'))
     else:
-        return render(request, "reservation/register.html")
+        return render(request, "reservation/index.html")

@@ -98,7 +98,7 @@
           {% if user.is_authenticated %}
           {% else %}
           <li><a type="button" data-toggle="modal" data-target="#loginModal">Login</a></li>
-          <li><a href="{% url 'register' %}">Sign up</a></li>
+          <li><a type="button" data-toggle="modal" data-target="#signModal">Sign up</a></li>
           {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -1289,14 +1289,15 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
   {% include 'reservation/messages.html' %}
+
   <!-- login modal -->
   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header border-bottom-0">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <button type="button" class="close" data-dismiss="modal" id="x_button" aria-label="Close">
+            <span id="x_button" aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
@@ -1337,31 +1338,181 @@
           </div>
         </div>
         <div class="modal-footer d-flex justify-content-center">
-          <div class="signup-section">No account yet? <a href="{% url 'register' %}" class="text-primary"> Sign Up</a>.
+          <div class="signup-section">No account yet? <a type="button" data-dismiss="modal" data-toggle="modal" data-target="#signModal"
+              class="text-primary"> Sign Up</a>.
           </div>
         </div>
       </div>
     </div>
-    <!-- end of login modal   -->
-    <!-- Vendor JS Files -->
-    <script src="static/reservation/assets/vendor/purecounter/purecounter.js"></script>
-    <script src="static/reservation/assets/vendor/aos/aos.js"></script>
-    <script src="static/reservation/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="static/reservation/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="static/reservation/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="static/reservation/assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="static/reservation/assets/vendor/php-email-form/validate.js"></script>
+  </div>
+  <!-- end of login modal   -->
+  <!-- signup modal -->
+  <div class="modal fade" id="signModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="min-width: 70vw;">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <button type="button" class="close" data-dismiss="modal" id="x_button" aria-label="Close">
+            <span id="x_button" aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-title text-center">
+            <!-- <h4>Login</h4> -->
+            <h1 class="logo"><a href="{% url 'index' %}"><img src="static/reservation/assets/img/LogoFinal1.svg"
+                  alt="LOGO" style="height: 100px;" class="img-fluid"></a></h1>
+          </div>
+          <div class="form-row">
 
-    <!-- Template Main JS File -->
-    <script src="static/reservation/assets/js/main.js"></script>
-    <script type="text/javascript">
+            <h2 class="card_title">Sign Up</h2>
+          </div>
+          {% include 'reservation/messages.html' %}
+          <form class="row g-3 needs-validation" action="{% url 'register' %}" method="POST"
+            enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            <div class="col-sm-6  mt-3">
+              <label for="validationServerUsername" class="form-label">Username</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                <input type="text" name="username" class="form-control " id="validationServerUsername"
+                  aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" value="{{ username }}"
+                  required>
+                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                  Please choose a username.
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6  mt-3">
+              <label for="validationServer01" class="form-label">Email</label>
+              <input type="email" name="email" class="form-control " id="validationServer01" value="{{ email }}"
+                required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-sm-6  mt-3">
+              <label for="validationServer02" class="form-label">Password</label>
+              <input type="password" class="form-control" name="password" id="validationServer02" value="{{ password }}"
+                required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-sm-6 mt-3">
+              <label for="validationServer02" class="form-label">Confirmation Password</label>
+              <input type="password" class="form-control" name="confirmation" id="validationServer02"
+                value="{{ password }}" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-sm-4 mt-3">
+              <label for="validationCustom01" class="form-label">First name</label>
+              <input type="text" class="form-control" id="validationCustom01" name="first_name" value="{{ first_name }}"
+                required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-sm-4 mt-3">
+              <label for="validationCustom02" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="validationCustom02" name="last_name" value="{{ last_name }}"
+                required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-sm-4 mt-3">
+              <label for="validationCustom01" class="form-label">Phone No.</label>
+              <input type="text" class="form-control" id="validationCustom01" name="phone_no" value="{{ phone_no }}"
+                required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-sm-4 mt-3">
+              <label for="validationCustom02" class="form-label">Nationality</label>
+              <input type="text" class="form-control" id="validationCustom02" name="nationality"
+                value="{{ nationality }}" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+
+            <div class="col-sm-4 mt-3">
+              <label for="validationCustom05" class="form-label">Location</label>
+              <input type="text" class="form-control" id="validationCustom05" name="location" value="{{ location }}"
+                required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+
+            <div class="col-sm-4 mt-3">
+              <label for="validationCustom05" class="form-label">Role</label>
+              <input type="text" class="form-control" id="validationCustom05" name="role" value="{{ role }}" required>
+              <div class="invalid-feedback">
+                Please provide a valid Role Ex. Student or Admin.
+              </div>
+            </div>
+
+            <div class="col-sm-4 mt-3">
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Choose Profile</label>
+                <input class="form-control" type="file" id="formFile" name="profile_img">
+              </div>
+            </div>
+
+            <div class="col-12 mt-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck3"
+                  aria-describedby="invalidCheck3Feedback" required>
+                <label class="form-check-label" for="invalidCheck3">
+                  Agree to terms and conditions
+                </label>
+                <div id="invalidCheck3Feedback" class="invalid-feedback">
+                  You must agree before submitting.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 mt-3" align="center">
+              <input class="btn btn-primary" type="submit" value="Sign Up">
+            </div>
+            <div class="col-12 mt-3" align="center">
+              <p class="btn btn_cancel">Already have an account? <a class="norm-link"  data-dismiss="modal" type="button" data-toggle="modal"
+                  data-target="#loginModal">Log
+                  In
+                  here.</a></p>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- end of sign-up modal   -->
+  <!-- Vendor JS Files -->
+  <script src="static/reservation/assets/vendor/purecounter/purecounter.js"></script>
+  <script src="static/reservation/assets/vendor/aos/aos.js"></script>
+  <script src="static/reservation/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/reservation/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="static/reservation/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/reservation/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="static/reservation/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/reservation/assets/js/main.js"></script>
+  <script src="{% static 'reservation/app.js' %}"></script>
+  <!-- <script type="text/javascript">
       // $(document).ready(function () {
       //   $('#loginModal').modal('show');
       //   $(function () {
       //     $('[data-toggle="tooltip"]').tooltip()
       //   })
       // });
-    </script>
+  </script> -->
 
 </body>
 
