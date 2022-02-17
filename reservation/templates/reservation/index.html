@@ -50,8 +50,9 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo"><a href="{% url 'index' %}"><img src="static/reservation/assets/img/singlelogobold.svg" alt="LOGO"
-            style="height: 60px;" class="img-fluid"></a></h1>
+      <h1 class="logo"><a href="{% url 'index' %}"><img src="static/reservation/assets/img/singlelogobold.svg"
+            alt="LOGO" style="height: 60px;" class="img-fluid"></a></h1>
+      <h1 class="logo"><a href="{% url 'index' %}">La Mirage</a></h1>
       <!-- {% if user.is_authenticated %}
       <a href="{% url 'profile_details' user.id %}"><i class="fa fa-user-circle-o" aria-hidden="true"
           style="font-size: 1em;"></i><span>{{ user.username }}</span></a>
@@ -68,21 +69,23 @@
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="#pricing">Special Offers</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-
-
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-      <!-- 
-      <i class='bx bx-menu menu-icon' style="font-size: 1.73em; color: blue;"></i> -->
-      <nav id="navbar" class="navbar">
-        <ul>
           <li class="dropdown"><a href="#"><span>Settings</span> <i class="fa fa-cogs" style="font-size: 1em;"
                 aria-hidden="true"></i></a>
             <ul>
               {% if user.is_authenticated and user.is_staff%}
               <li><a class="nav-link scrollto" href="{% url 'all_bookings' %}">Admin Page</a></li>
               {% endif %}
+              <!-- {% if user.is_authenticated %}
+              <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
+              <li><a href="{% url 'profile_details' user.id %}">My Profile</a></li>
+              {% endif %}
+              <li><a href="{% url 'logout' %}">logout</a></li> -->
+            </ul>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="dropdown"><a href="{% url 'profile_details' user.id %}">{{ user.username }}<i
+                class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 1em;"></i></a>
+            <ul>
               {% if user.is_authenticated %}
               <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
               <li><a href="{% url 'profile_details' user.id %}">My Profile</a></li>
@@ -90,17 +93,17 @@
               <li><a href="{% url 'logout' %}">logout</a></li>
             </ul>
           </li>
+          {% endif %}
+
           {% if user.is_authenticated %}
           {% else %}
           <li><a type="button" data-toggle="modal" data-target="#loginModal">Login</a></li>
           <li><a href="{% url 'register' %}">Sign up</a></li>
           {% endif %}
-          {% if user.is_authenticated %}
-          <a href="{% url 'profile_details' user.id %}"><i class="fa fa-user-circle-o" aria-hidden="true"
-              style="font-size: 1em;"></i><span>{{ user.username }}</span></a>
-          {% endif %}
         </ul>
-      </nav>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
 
     </div>
   </header><!-- End Header -->
@@ -540,6 +543,16 @@
               We are geared towards the fulfilment of the needs of any discerning guest and below you can find an
               alphabetical overview of the most commonly-used services and facilities offered by our hotel.
             </p>
+
+            <p class="text-justify">
+              Whether you are traveling for business or pleasure, the hotel services offered by the La Mirage Inn and
+              Suites make it an ideal choice. The hotel’s luxurious surroundings, comfort, thoughtful touches and a
+              personalized service sets it apart from any other hotel, allowing you to feel like being at home from your
+              very first steps into the hotel.
+            </p>
+          </div>
+
+          <div class="col-lg-3 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
             <ul>
               <li><i class="bx bx-check-double"></i> 24-Hours concierge </li>
               <li><i class="bx bx-check-double"></i> 24-Hours doctor on-call </li>
@@ -549,6 +562,12 @@
               <li><i class="bx bx-check-double"></i> Airport Transfers </li>
               <li><i class="bx bx-check-double"></i> Babysitting on request </li>
               <li><i class="bx bx-check-double"></i> Dry Cleaning </li>
+
+            </ul>
+
+          </div>
+          <div class="col-lg-3 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+            <ul>
               <li><i class="bx bx-check-double"></i> Laundry Service </li>
               <li><i class="bx bx-check-double"></i> Luggage Storage </li>
               <li><i class="bx bx-check-double"></i> Outside Catering Services </li>
@@ -557,12 +576,7 @@
               <li><i class="bx bx-check-double"></i> Tour & Excursions </li>
               <li><i class="bx bx-check-double"></i> Water Purification System </li>
             </ul>
-            <p class="text-justify">
-              Whether you are traveling for business or pleasure, the hotel services offered by the La Mirage Inn and
-              Suites make it an ideal choice. The hotel’s luxurious surroundings, comfort, thoughtful touches and a
-              personalized service sets it apart from any other hotel, allowing you to feel like being at home from your
-              very first steps into the hotel.
-            </p>
+
           </div>
 
         </div>
@@ -814,181 +828,181 @@
     </section><!-- End Testimonials Section -->
 
 
-<!-- ======= Team Section ======= -->
-<section id="team" class="team section-bg">
-  <div class="container" data-aos="fade-up">
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
 
-    <div class="section-title">
-      <h2>Team</h2>
-      <p>Hotel Reservation System is not possible without the help and collaboration of it’s group members.
-     This functional website is composed of five members namely Ram V. Alganes, Michelle C. Arroyo,
-     Nicole Shane M. Kamatoy, Paul Wilfred V. Pabilonia and Jessa May D. Ubaldo. </p>
-    </div>
+        <div class="section-title">
+          <h2>Team</h2>
+          <p>Hotel Reservation System is not possible without the help and collaboration of it’s group members.
+            This functional website is composed of five members namely Ram V. Alganes, Michelle C. Arroyo,
+            Nicole Shane M. Kamatoy, Paul Wilfred V. Pabilonia and Jessa May D. Ubaldo. </p>
+        </div>
 
-    <div class="row">
+        <div class="row">
 
-     <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-       <div class="swiper-wrapper">
+          <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
 
-         <div class="swiper-slide">
-        <div class="member">
-          <div class="member-img">
-            <img src="static/reservation/assets/img/team/team-1.jpg" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="bi bi-twitter"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
+              <div class="swiper-slide">
+                <div class="member">
+                  <div class="member-img">
+                    <img src="static/reservation/assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h4>Ram V. Alganes</h4>
+                    <span>Chief Executive Officer</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="member">
+                  <div class="member-img">
+                    <img src="static/reservation/assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h4>Paul Wilfred V. Pabilonia</h4>
+                    <span>Product Manager</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="member">
+                  <div class="member-img">
+                    <img src="static/reservation/assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h4>Michelle C. Arroyo</h4>
+                    <span>Product Manager</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="member">
+                  <div class="member-img">
+                    <img src="static/reservation/assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h4>Nicole Shane M. Kamatoy</h4>
+                    <span>CTO</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="member">
+                  <div class="member-img">
+                    <img src="static/reservation/assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h4>Jessa May D. Ubaldo</h4>
+                    <span>Accountant</span>
+                  </div>
+                </div>
+              </div>
+
             </div>
-          </div>
-          <div class="member-info">
-            <h4>Ram V. Alganes</h4>
-            <span>Chief Executive Officer</span>
           </div>
         </div>
       </div>
 
-      <div class="swiper-slide">
-        <div class="member">
-          <div class="member-img">
-            <img src="static/reservation/assets/img/team/team-2.jpg" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="bi bi-twitter"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Special Offers</h2>
+          <p>Can’t get enough with our hotel amenities and services? La Mirage Inn and Suites also provides special
+            offers exclusively with our beloved guests. Become a member to get exciting offers and discounts for a more
+            convenient and comfortable stay.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-im" data-aos-delay="100">
+            <div class="box">
+              <h3>FREE MEMBERSHIP</h3>
+              <h4><sup>Php</sup>0<span> / month</span></h4>
+              <ul>
+                <li>Earn exlusive La Mirage loyalty points whenever you come back from time to time and get some hotel
+                  rewards.</li>
+                <li class="na">Monthly Payment</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Avail Now</a>
+              </div>
             </div>
           </div>
-          <div class="member-info">
-            <h4>Paul Wilfred V. Pabilonia</h4>
-            <span>Product Manager</span>
-          </div>
-        </div>
-      </div>
 
-      <div class="swiper-slide">
-        <div class="member">
-          <div class="member-img">
-            <img src="static/reservation/assets/img/team/team-3.jpg" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="bi bi-twitter"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
+          <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">
+            <div class="box featured">
+              <h3>HOLIDAY DISCOUNT</h3>
+              <h4><sup>get</sup>10%<span> discount</span></h4>
+              <ul>
+                <li>Visit La Mirage Inn and Suites every holiday in any month and get at least a 10% discount on your
+                  overall booking.</li>
+                <li class="na">Vouchers Included</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Inquire Now</a>
+              </div>
             </div>
           </div>
-          <div class="member-info">
-            <h4>Michelle C. Arroyo</h4>
-            <span>Product Manager</span>
-          </div>
-        </div>
-      </div>
 
-      <div class="swiper-slide">
-        <div class="member">
-          <div class="member-img">
-            <img src="static/reservation/assets/img/team/team-4.jpg" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="bi bi-twitter"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-         </div>
-          <div class="member-info">
-            <h4>Nicole Shane M. Kamatoy</h4>
-            <span>CTO</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="swiper-slide">
-        <div class="member">
-          <div class="member-img">
-            <img src="static/reservation/assets/img/team/team-4.jpg" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="bi bi-twitter"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
+          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="100">
+            <div class="box">
+              <h3>BUY 2, GET 1 FREE DEAL</h3>
+              <h4><sup>avail</sup>2<span> night stay</span></h4>
+              <ul>
+                <li>La Mirage Inn and Suites offers free night's stay with the purchase of two days made exclusively for
+                  loyal members.</li>
+                <li class="na">Daily Promo</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Get Now</a>
+              </div>
             </div>
           </div>
-          <div class="member-info">
-            <h4>Jessa May D. Ubaldo</h4>
-            <span>Accountant</span>
-          </div>
+
         </div>
+
       </div>
-
-       </div>
-     </div>
-    </div>
-  </div>
-   
-</section><!-- End Team Section -->
-
- <!-- ======= Pricing Section ======= -->
- <section id="pricing" class="pricing">
-   <div class="container" data-aos="fade-up">
-
-     <div class="section-title">
-       <h2>Special Offers</h2>
-       <p>Can’t get enough with our hotel amenities and services? La Mirage Inn and Suites also provides special
-         offers exclusively with our beloved guests. Become a member to get exciting offers and discounts for a more
-         convenient and comfortable stay.</p>
-     </div>
-
-     <div class="row">
-
-       <div class="col-lg-4 col-md-6" data-aos="zoom-im" data-aos-delay="100">
-         <div class="box">
-           <h3>FREE MEMBERSHIP</h3>
-           <h4><sup>Php</sup>0<span> / month</span></h4>
-           <ul>
-             <li>Earn exlusive La Mirage loyalty points whenever you come back from time to time and get some hotel
-               rewards.</li>
-             <li class="na">Monthly Payment</li>
-           </ul>
-           <div class="btn-wrap">
-             <a href="#" class="btn-buy">Avail Now</a>
-           </div>
-         </div>
-       </div>
-
-       <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">
-         <div class="box featured">
-           <h3>HOLIDAY DISCOUNT</h3>
-           <h4><sup>get</sup>10%<span> discount</span></h4>
-           <ul>
-             <li>Visit La Mirage Inn and Suites every holiday in any month and get at least a 10% discount on your
-               overall booking.</li>
-             <li class="na">Vouchers Included</li>
-           </ul>
-           <div class="btn-wrap">
-             <a href="#" class="btn-buy">Inquire Now</a>
-           </div>
-         </div>
-       </div>
-
-       <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="100">
-         <div class="box">
-           <h3>BUY 2, GET 1 FREE DEAL</h3>
-           <h4><sup>avail</sup>2<span> night stay</span></h4>
-           <ul>
-             <li>La Mirage Inn and Suites offers free night's stay with the purchase of two days made exclusively for
-               loyal members.</li>
-             <li class="na">Daily Promo</li>
-           </ul>
-           <div class="btn-wrap">
-             <a href="#" class="btn-buy">Get Now</a>
-           </div>
-         </div>
-       </div>
-
-     </div>
-
-   </div>
- </section><!-- End Pricing Section -->
+    </section><!-- End Pricing Section -->
 
 
 
@@ -1168,7 +1182,7 @@
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
                 </div>
-                <div class="col-md-6 form-group mt-3 mt-md-3">
+                <div class="col-md-6 form-group ">
                   <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                 </div>
               </div>
