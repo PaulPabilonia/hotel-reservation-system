@@ -1,4 +1,25 @@
 /*--------------------------------------------------------------
+# view_reciept
+--------------------------------------------------------------*/
+.gold{
+	background-color: #CE9B01 !important;
+	color: #fff;
+}
+
+.text-right{
+	text-align: right !important;
+}
+.background-logo{
+	background-image: url('/static/reservation/images/background-logo.svg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center center;
+}
+.background-logo .opacity{
+	opacity: 0.1;
+}
+
+/*--------------------------------------------------------------
 # hotel_rooms
 --------------------------------------------------------------*/
 

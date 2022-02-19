@@ -1,7 +1,7 @@
 from unicodedata import name
 import django
 
-
+from django.contrib.auth import views as auth_views
 from django.urls import path
 from . import views
 
@@ -26,9 +26,17 @@ urlpatterns = [
     path("retrieve_cancelled_bookings/<int:user_id>",views.retrieve_cancelled_bookings,name="retrieve_cancelled_bookings"),
     path("all_cancelled_bookings", views.all_cancelled_bookings, name= "all_cancelled_bookings"),
     path("my_bookings",views.my_bookings,name="my_bookings"),
+    path("cancel_mybookings/<int:user_id>",views.cancel_mybookings,name="cancel_mybookings"),
     path("glasgow_room",views.glasgow_room,name="glasgow_room"),
     path("bozeman_room",views.bozeman_room,name="bozeman_room"),
     path("miami_room",views.miami_room,name="miami_room"),
     path("savanna_room",views.savanna_room,name="savanna_room"),
     path("tulum_room",views.tulum_room,name="tulum_room"),
+
+    path("view_reciept/<int:user_id>",views.view_reciept,name="view_reciept"),
+
+    path('reset_password', auth_views.PasswordResetView.as_view(), name= "reset_password"),
+    path('reset_password_sent', auth_views.PasswordResetDoneView.as_view(), name= "password_reset_done"),
+    path('reset/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(), name = "password_reset_confirm"),
+    path('reset_password_complete', auth_views.PasswordResetCompleteView.as_view(), name= "password_reset_complete"),
 ]

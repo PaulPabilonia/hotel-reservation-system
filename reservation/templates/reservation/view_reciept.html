@@ -34,7 +34,6 @@
         </tr>
       </thead>
       <tbody>
-        {% for book in bookings %}
         <tr>
           <th scope="row">{{ book.client.username }}</th>
           <td>{{book.client.first_name}} {{book.client.last_name}}</td>
@@ -44,7 +43,7 @@
           <td>{{ book.numAdults }}</td>
           <td>{{ book.numKids }}</td>
           <td>
-            <a href="{% url 'cancel_mybookings' book.id %}" class="btn btn-danger">Cancel</a>
+            <a href="{% url 'cancel_booking' book.id %}" class="btn btn-danger">Cancel</a>
             <a href="{% url 'booking_edit' book.id %}" class="btn btn-primary">Edit</a>
             <a href="{% url 'view_reciept' book.id %}" class="btn btn-success">View Receipt</a>
           </td>
@@ -80,7 +79,7 @@
                 <div><span class="font-weight-bold">Full Name: </span> {{book.client.first_name}}
                   {{book.client.last_name}} </div>
                 <div><span class="font-weight-bold">Email: </span> {{ book.client.email }} </div>
-                <div><span class="font-weight-bold">Phone Number: </span>  {{ book.user_profile.phone_no }} </div>
+                <div><span class="font-weight-bold">Phone Number: </span> {{ book.user_profile.phone_no }} </div>
                 <div class="row">
                   <div class="col-sm">
                     <span class="font-weight-bold">Room Type: </span> {{ book.room_type }}
@@ -94,33 +93,65 @@
                     <span class="font-weight-bold"> Number of Adults: </span> {{ book.numAdults }}
                   </div>
                   <div class="col-sm">
-                    <span class="font-weight-bold"> Number of Kids: </span>  {{ book.numKids }}
+                    <span class="font-weight-bold"> Number of Kids: </span> {{ book.numKids }}
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm">
-                    <span class="font-weight-bold">Check in: </span>  {{ book.checkIn }}
+                    <span class="font-weight-bold">Check in: </span> {{ book.checkIn }}
                   </div>
                   <div class="col-sm">
-                    <span class="font-weight-bold">Check out: </span>  {{ book.checkOut }}
+                    <span class="font-weight-bold">Check out: </span> {{ book.checkOut }}
                   </div>
                 </div>
               </div>
               <div class="modal-footer">
                 <div class="col-sm">
-                  {% if roomType == 'Bozeman' %}
-                  <span class="font-weight-bold">Total Payment: Php 2199.00</span>
+                  {% if roomType == "Bozeman" and roomCategory == "Standard" %}
+                  <span class="font-weight-bold">Total Payment: Php2199.00</span>
+                  {% elif roomType == "Bozeman" and roomCategory == "Deluxe" %}
+                  <span class="font-weight-bold">Total Payment: Php3199.00</span>
+                  {% elif roomType == "Bozeman" and roomCategory == "Premium" %}
+                  <span class="font-weight-bold">Total Payment: Php4199.00</span>
+
+                  {% elif roomType == "Glasgow" and roomCategory == "Standard" %}
+                  <span class="font-weight-bold">Total Payment: Php2999.00</span>
+                  {% elif roomType == "Glasgow" and roomCategory == "Deluxe" %}
+                  <span class="font-weight-bold">Total Payment: Php3999.00</span>
+                  {% elif roomType == "Glasgow" and roomCategory == "Premium" %}
+                  <span class="font-weight-bold">Total Payment: Php4999.00</span>
+
+                  {% elif roomType == "Miami" and roomCategory == "Standard" %}
+                  <span class="font-weight-bold">Total Payment: Php2399.00</span>
+                  {% elif roomType == "Miami" and roomCategory == "Deluxe" %}
+                  <span class="font-weight-bold">Total Payment: Php3399.00</span>
+                  {% elif roomType == "Miami" and roomCategory == "Premium" %}
+                  <span class="font-weight-bold">Total Payment: Php4399.00</span>
+
+                  {% elif roomType == "Savanna" and roomCategory == "Standard" %}
+                  <span class="font-weight-bold">Total Payment: Php2499.00</span>
+                  {% elif roomType == "Savanna" and roomCategory == "Deluxe" %}
+                  <span class="font-weight-bold">Total Payment: Php3499.00</span>
+                  {% elif roomType == "Savanna" and roomCategory == "Premium" %}
+                  <span class="font-weight-bold">Total Payment: Php4499.00</span>
+
+                  {% elif roomType == "Tulum" and roomCategory == "Standard" %}
+                  <span class="font-weight-bold">Total Payment: Php2999.00</span>
+                  {% elif roomType == "Tulum" and roomCategory == "Deluxe" %}
+                  <span class="font-weight-bold">Total Payment: Php3999.00</span>
+                  {% elif roomType == "Tulum" and roomCategory == "Premium" %}
+                  <span class="font-weight-bold">Total Payment: Php4999.00</span>
+
                   {% endif %}
                 </div>
                 <div class="col-sm">
-                  <button type="button" class="btn gold" data-bs-dismiss="modal">Confirm</button>
+                  <a type="button" class="btn gold" style="color: white;" data-bs-dismiss="modal">Confirm</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
         {% endif %}
-        {% endfor %}
       </tbody>
     </table>
 

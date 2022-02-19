@@ -21,17 +21,22 @@ def index(request):
 def glasgow_room(request):
     return render(request, "reservation/glasgow_room.html")
 
+
 def bozeman_room(request):
     return render(request, "reservation/bozeman_room.html")
+
 
 def miami_room(request):
     return render(request, "reservation/miami_room.html")
 
+
 def savanna_room(request):
     return render(request, "reservation/savanna_room.html")
 
+
 def tulum_room(request):
     return render(request, "reservation/tulum_room.html")
+
 
 def profile_details(request, user_id):
     userProfiles = UserProfile.objects.get(pk=user_id)
@@ -39,11 +44,24 @@ def profile_details(request, user_id):
         'userProfile': userProfiles,
     })
 
+
 def my_bookings(request):
     user = request.user
-    bookings = Booking.objects.filter(client=user)
+    bookings = Booking.objects.filter(client=user,is_cancelled=False)
     return render(request, "reservation/my_bookings.html",
                   {'bookings': bookings})
+
+
+def view_reciept(request, user_id):
+    user = request.user
+    book = Booking.objects.get(pk=user_id)
+    return render(
+        request, "reservation/view_reciept.html", {
+            'book': book,
+            'roomType': book.room_type,
+            'roomCategory': book.room_category,
+            'is_view': True
+        })
 
 
 def all_bookings(request):
@@ -72,6 +90,12 @@ def cancel_booking(request, user_id):
 
     return HttpResponseRedirect(reverse('all_bookings'))
 
+def cancel_mybookings(request, user_id):
+    user = Booking.objects.get(pk=user_id)
+    user.is_cancelled = True
+    user.save()
+
+    return HttpResponseRedirect(reverse('my_bookings'))
 
 def all_users(request):
     all_profile = UserProfile.objects.filter(is_deleted=False)
@@ -186,9 +210,6 @@ def book_room(request, user_id):
     if request.method == "POST":
         user = request.user
         user_profile = UserProfile.objects.get(pk=user_id)
-        # phone_no = request.POST["phone_no"]
-        # nationality = request.POST["nationality"]
-        # location = request.POST["nationality"]
 
         room_category = request.POST["room_category"]
         room_type = request.POST["room_type"]
@@ -213,22 +234,16 @@ def book_room(request, user_id):
         except IntegrityError:
             messages.error(request, "Booking Failed!")
             return render(
-                request,
-                "reservation/booking_details.html",
-                {
+                request, "reservation/booking_details.html", {
                     "checkIn": checkIn,
                     "checkOut": checkOut,
-                    # "phone_no": phone_no,
-                    # "nationality": nationality,
-                    # "location": location,
                     "numAdults": numAdults,
                     "numKids": numKids,
                     "mop": mop,
                     "room_category": room_category,
                     "room_type": room_type
                 })
-        messages.success(request, "Boooked Successfully!")
-        #after booking it will stay at the booking_details page
+        messages.success(request, "Booked Successfully!")
         return HttpResponseRedirect(
             reverse('booking_details', args=(user_id, )))
     else:
@@ -257,6 +272,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
+
     return HttpResponseRedirect(reverse("index"))
 
 
@@ -324,8 +340,11 @@ def register(request):
                     "nationality": nationality,
                     "location": location
                 })
-        messages.success(request,
-                         "Registered Successfully! You can now Log in")
-        return HttpResponseRedirect(reverse('index'))
+        user = authenticate(request, username=username, password=password)
+        # Check if authentication successful
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Registered Successfully!")
+            return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "reservation/index.html")

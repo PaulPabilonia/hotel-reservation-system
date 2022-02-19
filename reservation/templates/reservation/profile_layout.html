@@ -29,6 +29,7 @@
   <link href="/static/reservation/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="/static/reservation/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <!-- Template Main CSS File -->
   <link href="/static/reservation/assets/css/style.css" rel="stylesheet">
   <link href="/static/reservation/style.css" rel="stylesheet">
@@ -86,7 +87,7 @@
               <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
               <li><a href="{% url 'profile_details' user.id %}">My Profile</a></li>
               {% endif %}
-              <li><a href="{% url 'logout' %}">logout</a></li>
+              <li><a href="{% url 'logout' %}">Log out</a></li>
             </ul>
           </li>
           {% endif %}
@@ -195,7 +196,7 @@
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
-  {% block script %}
+
 
   <!-- Vendor JS Files -->
   <script src="/static/reservation/assets/vendor/purecounter/purecounter.js"></script>
@@ -208,6 +209,7 @@
 
   <!-- Template Main JS File -->
   <script src="/static/reservation/assets/js/main.js"></script>
+
   <script>
     //Hide edit and save changes
     const editing = () => {
@@ -251,6 +253,7 @@
       }
     }  
   </script>
+  {% block script %}
   {% endblock %}
 </body>
 

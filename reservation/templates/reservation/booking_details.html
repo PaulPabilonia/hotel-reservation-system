@@ -207,7 +207,7 @@
                     <label for="username" class="form-label">Room Type</label>
                     <select class="form-control" name="room_type" id="select" required>
                       <option disabled selected value>--Select Room Type--</option>
-                      <option value="Boozeman">Boozeman</option>
+                      <option value="Bozeman">Bozeman</option>
                       <option value="Glasgow">Glasgow</option>
                       <option value="Miami">Miami</option>
                       <option value="Savanna">Savanna</option>
@@ -269,7 +269,7 @@
                     <select name="mop" class="form-control" required>
                       <option disabled selected value>--Mode of Payment--</option>
                       <option value="Online">Online Bank Transfer</option>
-                      <option value="Card">Card/Debit Card</option>
+                      <option value="Card">Credit or Debit Card</option>
                     </select>
                   </div>
                 </div>
@@ -288,28 +288,10 @@
           </div>
         </form>
       </div>
-      
+
 
 
   </main><!-- End #main -->
-
-
-  <!-- Success -->
-  <!-- <div class="modal fade" id="modal_success" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog ">
-      <div class="modal-content">
-        <div class="modal-header headercolorsuccess checkicon icon" href="#">
-          <img  src="{% static './reservation/images/successfully.png' %}">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center">
-          <h4>Great!</h4>
-          <p>Successfully Booked!</p>
-          <button class="btn btn btnsuccess" data-bs-dismiss="modal">Start Exploring</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
 
 
 
@@ -325,6 +307,24 @@
         <div class="modal-body text-center">
           <h4>Ooops!</h4>
           <p>Something went wrong. Please try again1111.</p>
+          <button class="btn btn btnerror" data-bs-dismiss="modal">Try again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success -->
+  <!-- Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header headercolorerror checkicon icon" href="#">
+          <img src="{% static './reservation/images/error.png' %}">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <h4>Great!</h4>
+          <p>Booked Successfully!</p>
           <button class="btn btn btnerror" data-bs-dismiss="modal">Try again</button>
         </div>
       </div>
