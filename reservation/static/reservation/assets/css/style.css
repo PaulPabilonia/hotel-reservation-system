@@ -1,20 +1,22 @@
 /*--------------------------------------------------------------
+# hotel_rooms
+--------------------------------------------------------------*/
+
+#hotel-title{
+  color: #a77e05f8;
+}
+.booknow_room{
+  color: #a77e05f8;
+  border-color: #a77e05f8;
+}
+.booknow_room:hover{
+  color: white;
+  border-color: #CE9B01 ;
+}
+
+/*--------------------------------------------------------------
 # scroll
 --------------------------------------------------------------*/
-/* ::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,1);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color:#fff;
-  -webkit-box-shadow: inset 0 0 6px rgba(90,90,90,0.7);
-} */
 .main-body::-webkit-scrollbar {
   width: 8px;
   background-color: #F5F5F5;
@@ -46,7 +48,7 @@
   left: 0;
   top: 2px;
   font-size: 20px;
-  color: #957902;
+  color: #CE9B01;
   line-height: 1;
 }
 .roomdetails .details h2{
@@ -162,12 +164,12 @@ body {
 }
 
 a {
-  color: #957902;
+  color: #CE9B01;
   text-decoration: none;
 }
 
 a:hover {
-  color: #BD9A06;
+  color: #87731d;
   text-decoration: none;
 }
 
@@ -185,7 +187,7 @@ h1, h2, h3, h4, h5, h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #957902;
+  background: #CE9B01;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -224,7 +226,7 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   top: calc(50% - 30px);
   left: calc(50% - 30px);
-  border: 6px solid #957902;
+  border: 6px solid #CE9B01;
   border-top-color: #fff;
   border-bottom-color: #fff;
   border-radius: 50%;
@@ -329,10 +331,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 5px;
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-  color: #957902;
+  color: #CE9B01;
 }
 .navbar .getstarted, .navbar .getstarted:focus {
-  background: #957902;
+  background: #CE9B01;
   padding: 8px 20px;
   margin-left: 30px;
   border-radius: 4px;
@@ -340,7 +342,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 .navbar .getstarted:hover, .navbar .getstarted:focus:hover {
   color: #fff;
-  background: #AE8E07;
+  background: #E0A901;
+}
+.book_room, .book_room:focus {
+  background: #CE9B01;
+  border-radius: 4px;
+  color: #fff;
+}
+ .book_room:hover,.book_room:focus:hover {
+  color: #fff;
+  background: #E0A901;
 }
 .navbar .dropdown ul {
   display: block;
@@ -368,7 +379,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 12px;
 }
 .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
-  color: #957902;
+  color: #CE9B01;
 }
 .navbar .dropdown:hover > ul {
   opacity: 1;
@@ -532,7 +543,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.5s;
   margin-top: 30px;
   color: #fff;
-  background: #957902;
+  background: #CE9B01;
 }
 
 .btn-get-bookNow {
@@ -585,13 +596,13 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease-in-out;
   font-size: 36px;
   line-height: 1;
-  color: #957902;
+  color: #CE9B01;
 }
 #hero .icon-box:hover {
   transform: scale(1.08);
 }
 #hero .icon-box:hover .title a {
-  color: #957902;
+  color: #CE9B01;
 }
 @media (min-width: 1024px) {
   #hero {
@@ -639,7 +650,7 @@ section{
   text-transform: uppercase;
   margin-bottom: 20px;
   padding-bottom: 0;
-  color: #5D4B02;
+  color: #a77e05f8;
 }
 .section-title p {
   margin-bottom: 0;
@@ -670,7 +681,7 @@ section{
   left: 0;
   top: 2px;
   font-size: 20px;
-  color: #957902;
+  color: #CE9B01;
   line-height: 1;
 }
 .about .content p:last-child {
@@ -686,14 +697,14 @@ section{
   border-radius: 5px;
   transition: 0.3s;
   line-height: 1;
-  color: #957902;
+  color: #CE9B01;
   -webkit-animation-delay: 0.8s;
   animation-delay: 0.8s;
   margin-top: 6px;
-  border: 2px solid #957902;
+  border: 2px solid #CE9B01;
 }
 .about .content .btn-learn-more:hover {
-  background: #957902;
+  background: #CE9B01;
   color: #fff;
   text-decoration: none;
 }
@@ -713,7 +724,7 @@ section{
   line-height: 48px;
   display: block;
   font-weight: 700;
-  color: #5D4B02;
+  color: #a77e05f8;
   margin-left: 80px;
   margin: auto;
 }
@@ -734,7 +745,7 @@ section{
 .about-video .content h3 {
   font-weight: 700;
   font-size: 24px;
-  color: #5D4B02;
+  color: #a77e05f8;
 }
 .about-video .content ul {
   list-style: none;
@@ -747,7 +758,7 @@ section{
 }
 .about-video .content ul i {
   font-size: 24px;
-  color: #957902;
+  color: #CE9B01;
   position: absolute;
   left: 0;
   top: -2px;
@@ -897,7 +908,7 @@ section{
   margin: 0;
 }
 .testimonials .testimonial-item .quote-icon-left, .testimonials .testimonial-item .quote-icon-right {
-  color: #ad9824a2;
+  color: #a77e05f8;
   font-size: 26px;
 }
 .testimonials .testimonial-item .quote-icon-left {
@@ -940,10 +951,10 @@ section{
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #957902;
+  border: 1px solid #a77e05f8;
 }
 .testimonials .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #957902;
+  background-color: #a77e05f8;
 }
 
 /*--------------------------------------------------------------
@@ -1114,7 +1125,7 @@ section{
   transition: all 0.3s ease-in-out;
 }
 .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
-  color: #957902;
+  color: #CE9B01;
 }
 .portfolio #portfolio-flters li:last-child {
   margin-right: 0;
@@ -1127,7 +1138,7 @@ section{
 }
 .portfolio .portfolio-wrap::before {
   content: "";
-  background: rgba(125, 103, 4, 0.6);
+  background: rgba(206, 155, 1, 0.7);
   position: absolute;
   left: 30px;
   right: 30px;
@@ -1310,7 +1321,7 @@ section{
 }
 .team .member .social a {
   transition: color 0.3s;
-  color: #5D4B02;
+  color: #CE9B01;
   margin: 0 10px;
   display: inline-block;
 }
@@ -1386,7 +1397,7 @@ section{
 }
 .pricing .box h4 {
   font-size: 42px;
-  color: #957902;
+  color: #CE9B01;
   font-weight: 500;
   font-family: "Open Sans", sans-serif;
   margin-bottom: 20px;
@@ -1424,21 +1435,21 @@ section{
   display: inline-block;
   padding: 10px 40px;
   border-radius: 4px;
-  color: #957902;
+  color: #CE9B01;
   transition: none;
   font-size: 14px;
   font-weight: 400;
   font-family: "Raleway", sans-serif;
   font-weight: 600;
   transition: 0.3s;
-  border: 2px solid #957902;
+  border: 2px solid #CE9B01;
 }
 .pricing .box .btn-buy:hover {
-  background: #957902;
+  background: #CE9B01;
   color: #fff;
 }
 .pricing .featured {
-  background: #957902;
+  background: #CE9B01;
 }
 .pricing .featured h3, .pricing .featured h4, .pricing .featured h4 span, .pricing .featured ul, .pricing .featured ul .na {
   color: #fff;
@@ -1453,7 +1464,7 @@ section{
 }
 .pricing .featured .btn-buy:hover {
   background: #fff;
-  color: #957902;
+  color: #CE9B01;
 }
 
 /*--------------------------------------------------------------
@@ -1507,10 +1518,10 @@ section{
   display: none;
 }
 .faq .faq-list a.collapsed {
-  color: #5D4B02;
+  color: #a77e05f8;
 }
 .faq .faq-list a.collapsed:hover {
-  color: #957902;
+  color: #a77e05f8;
 }
 .faq .faq-list a.collapsed .icon-show {
   display: inline-block;
@@ -1561,7 +1572,7 @@ section{
   margin-top: 40px;
 }
 .contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i {
-  background: #957902;
+  background: #CE9B01;
   color: #fff;
 }
 .contact .php-email-form {
@@ -1624,7 +1635,7 @@ section{
   padding: 10px 12px;
 }
 .contact .php-email-form button[type=submit] {
-  background: #957902;
+  background: #CE9B01;
   border: 0;
   padding: 10px 30px;
   color: #fff;
@@ -1817,7 +1828,7 @@ section{
 #footer .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #957902;
+  background: #CE9B01;
   color: #fff;
   line-height: 1;
   padding: 8px 0;

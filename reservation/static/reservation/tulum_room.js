@@ -29,6 +29,7 @@ function load_hotelroom(room) {
     <img src="static/reservation/assets/img/HotelRooms/TulumStandard/TulumStandard3.jpg" alt="">
   </div>`
     document.querySelector('#hotel-title').innerHTML = `<h3>Tulum ${room.charAt(0).toUpperCase() + room.slice(1)}</h3>`;
+    document.querySelector('.booknow_room').innerHTML = `Book Now / Php2999 per night`
     document.querySelector('#hotel-content').innerHTML = `<p>The Tulum Standard Room comprises 1 Single Bed, 2 Bedside Table, a Desk & Chair that can accommodate
     up to 3-6 maximum persons. The room is fully furnished with a completely painted wall, trendy
     furnishings that are made up of Mirage Furniture and a balcony with smoking area. Our ultramodern
@@ -63,6 +64,7 @@ function load_hotelroom(room) {
     <img src="static/reservation/assets/img/HotelRooms/TulumDeluxe/TulumDeluxe3.jpg" alt="">
   </div>`
     document.querySelector('#hotel-title').innerHTML = `<h3>Tulum ${room.charAt(0).toUpperCase() + room.slice(1)}</h3>`;
+    document.querySelector('.booknow_room').innerHTML = `Book Now / Php3999 per night`
     document.querySelector('#hotel-content').innerHTML = `<p>The Tulum Deluxe Room comprises 3 Twin Beds with 3 extra pillows and 3 blankets, 2 Bedside Tables, a
     Desk & Chair. Extra bed can be added upon request. This room is larger than the Tulum Standard Room
     and is therefore spacious enough for an additional bed for double occupancy (Double Room that can
@@ -101,6 +103,7 @@ function load_hotelroom(room) {
     <img src="static/reservation/assets/img/HotelRooms/TulumPremium/TulumPremium3.jpg" alt="">
   </div>`
     document.querySelector('#hotel-title').innerHTML = `<h3>Tulum ${room.charAt(0).toUpperCase() + room.slice(1)}</h3>`;
+    document.querySelector('.booknow_room').innerHTML = `Book Now / Php4999 per night`
     document.querySelector('#hotel-content').innerHTML = `<p>The Tulum Premium Room comprises a 2 Queen Size Bed with 4 extra pillows and 4 blankets, 2 Bedside
     Tables, a Desk & Chair. Extra beds, additional pillows and blankets can be added upon request. This
     room is furnished with wall to wall carpeting, trendy furnishings exclusively made by Mirage furniture

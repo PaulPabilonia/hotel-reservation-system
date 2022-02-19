@@ -29,6 +29,7 @@ function load_hotelroom(room) {
     <img src="static/reservation/assets/img/HotelRooms/MiamiStandard/MiamiStandard3.jpg" alt="">
   </div>`
     document.querySelector('#hotel-title').innerHTML = `<h3>Miami ${room.charAt(0).toUpperCase() + room.slice(1)}</h3>`;
+    document.querySelector('.booknow_room').innerHTML = `Book Now / Php2999 per night`
     document.querySelector('#hotel-content').innerHTML = `<p>The Miami Standard Room comprises 1 Single Bed, 2 Bedside Table, a Desk & Chair that can accommodate
     up to 5 maximum persons. The room is fully furnished with a wall painted in white and blue, trendy
     furnishings that are made up of Mirage Furniture and a balcony with smoking area. Our ultramodern
@@ -63,6 +64,7 @@ function load_hotelroom(room) {
     <img src="static/reservation/assets/img/HotelRooms/MiamiDeluxe/MiamiDeluxe3.jpg" alt="">
   </div>`
     document.querySelector('#hotel-title').innerHTML = `<h3>Miami ${room.charAt(0).toUpperCase() + room.slice(1)}</h3>`;
+    document.querySelector('.booknow_room').innerHTML = `Book Now / Php3999 per night`
     document.querySelector('#hotel-content').innerHTML = `<p>The Miami Deluxe Room comprises 2 Twin Beds with extra pillows and blankets, 2 Bedside Tables, a
     Desk & Chair. This room is larger than the Miami Standard Room and is therefore spacious enough for
     an additional bed for triple occupancy (Triple Room that can accommodate up to 8-10 persons). The room
@@ -100,6 +102,7 @@ function load_hotelroom(room) {
     <img src="static/reservation/assets/img/HotelRooms/MiamiPremium/MiamiPremium3.jpg" alt="">
   </div>`
     document.querySelector('#hotel-title').innerHTML = `<h3>Miami ${room.charAt(0).toUpperCase() + room.slice(1)}</h3>`;
+    document.querySelector('.booknow_room').innerHTML = `Book Now / Php4999 per night`
     document.querySelector('#hotel-content').innerHTML = `<p>The Miami Premium Room comprises a 2 Queen Size Bed with 4 extra pillows and 4 blankets, 2 Bedside
     Tables, a Desk & Chair. Extra bed, additional pillows and blankets can be added upon request This room
     is furnished with wall to wall carpeting, trendy furnishings exclusively made by Mirage furniture and

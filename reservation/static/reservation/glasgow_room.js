@@ -29,6 +29,7 @@ function load_hotelroom(room) {
     <img src="static/reservation/assets/img/HotelRooms/GlasgowStandard/GlasgowStandard3.jpg" alt="">
   </div>`
     document.querySelector('#hotel-title').innerHTML = `<h3>Glasgow ${room.charAt(0).toUpperCase() + room.slice(1)}</h3>`;
+    document.querySelector('.booknow_room').innerHTML = `Book Now / Php2399 per night`
     document.querySelector('#hotel-content').innerHTML = `<p>The Glasgow Standard Room comprises 2 Single Bed, 1 Bedside Table, a Desk & Chair that can accommodate
 up to 3-4 persons. The room is furnished with a wall painted in white, trendy furnishings that are
 made up of Mirage Furniture and a balcony with smoking area. Our ultramodern glass bathroom is
@@ -64,6 +65,7 @@ Glasgow Standard Room amenities includes:</p>`;
     <img src="static/reservation/assets/img/HotelRooms/GlasgowDeluxe/GlasgowDeluxe3.jpg" alt="">
   </div>`
     document.querySelector('#hotel-title').innerHTML = `<h3>Glasglow ${room.charAt(0).toUpperCase() + room.slice(1)}</h3>`;
+    document.querySelector('.booknow_room').innerHTML = `Book Now / Php3399 per night`
     document.querySelector('#hotel-content').innerHTML = `<p>The Glasgow Deluxe Room comprises 2 Twin Beds with 2 extra pillows and 2 blankets, 2 Bedside Tables, a
     Desk & Chair. This room is larger than theGlasgow Standard Room and is therefore spacious enough for
     an additional bed for double occupancy (Double Room that can accommodate up to 6-12 persons). The room
@@ -100,6 +102,7 @@ Glasgow Standard Room amenities includes:</p>`;
     <img src="static/reservation/assets/img/HotelRooms/GlasgowPremium/GlasgowPremium3.jpg" alt="">
   </div>`
     document.querySelector('#hotel-title').innerHTML = `<h3>Glasglow ${room.charAt(0).toUpperCase() + room.slice(1)}</h3>`;
+    document.querySelector('.booknow_room').innerHTML = `Book Now / Php4399 per night`
     document.querySelector('#hotel-content').innerHTML = `<p>The Glasgow Premium Room comprises a 2 Queen Size Bed with 4 extra pillows and 4 blankets, 2 Bedside
     Tables, a Desk & Chair. This room is furnished with wall to wall carpeting, trendy furnishings
     exclusively made by Mirage furniture and a large private balcony that offers a side sea view. This

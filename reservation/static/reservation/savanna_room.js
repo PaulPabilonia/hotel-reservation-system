@@ -29,6 +29,7 @@ function load_hotelroom(room) {
     <img src="static/reservation/assets/img/HotelRooms/SavannaStandard/SavannaStandard3.jpg" alt="">
   </div>`
     document.querySelector('#hotel-title').innerHTML = `<h3>Savanna ${room.charAt(0).toUpperCase() + room.slice(1)}</h3>`;
+    document.querySelector('.booknow_room').innerHTML = `Book Now / Php2499 per night`
     document.querySelector('#hotel-content').innerHTML = `<p>The Savanna Standard Room comprises 1 Double Bed, 1 Bedside Tables, a Desk & Chair that can
     accommodate up to 3-5 persons. The room is furnished with a wall painted in crystal white, trendy
     furnishings and a balcony. A private pool is included in this room. Our ultramodern glass bathroom is
@@ -62,6 +63,7 @@ function load_hotelroom(room) {
     <img src="static/reservation/assets/img/HotelRooms/SavannaDeluxe/SavannaDeluxe3.jpg" alt="">
   </div>`
     document.querySelector('#hotel-title').innerHTML = `<h3>Savanna ${room.charAt(0).toUpperCase() + room.slice(1)}</h3>`;
+    document.querySelector('.booknow_room').innerHTML = `Book Now / Php3499 per night`
     document.querySelector('#hotel-content').innerHTML = `<p>The Savanna Deluxe Room comprises 2 Twin Beds with 3 extra pillows and 3 blankets, 2 Bedside Tables, a
     Desk & Chair. Extra bed can be added upon request. This deluxe room can accommodate up to 5-12
     persons. The room is furnished with a wall painted in crystal white, trendy furnishings and a balcony.
@@ -100,6 +102,7 @@ function load_hotelroom(room) {
     <img src="static/reservation/assets/img/HotelRooms/SavannaPremium/SavannaPremium3.jpg" alt="">
   </div>`
     document.querySelector('#hotel-title').innerHTML = `<h3>Savanna ${room.charAt(0).toUpperCase() + room.slice(1)}</h3>`;
+    document.querySelector('.booknow_room').innerHTML = `Book Now / Php4499 per night`
     document.querySelector('#hotel-content').innerHTML = `<p>The Savanna Premium Room comprises a 3 Queen Size Bed with 6 extra pillows and 6 blankets, 2 Bedside
     Tables, a Desk & Chair. Extra bed, additional pillows and blankets can be added upon request This room
     is furnished with wall to wall carpeting, trendy furnishings exclusively made by Mirage furniture and
