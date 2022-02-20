@@ -90,14 +90,14 @@
             </ul>
           </li>
           {% if user.is_authenticated %}
-          <li class="dropdown"><a href="{% url 'profile_details' user.id %}">{{ user.username }}<i
+          <li class="dropdown"><a href="#">{{ user.username }}<i
                 class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 1em;"></i></a>
             <ul>
               {% if user.is_authenticated %}
               <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
               <li><a href="{% url 'profile_details' user.id %}">My Profile</a></li>
               {% endif %}
-              <li><a href="{% url 'logout' %}">logout</a></li>
+              <li><a href="{% url 'logout' %}">Logout</a></li>
             </ul>
           </li>
           {% endif %}
