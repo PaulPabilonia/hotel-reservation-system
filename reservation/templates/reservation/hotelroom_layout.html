@@ -81,8 +81,8 @@
             </ul>
           </li>
           {% if user.is_authenticated %}
-          <li class="dropdown"><a href="#">{{ user.username }}<i
-                class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 1em;"></i></a>
+          <li class="dropdown"><a href="#">{{ user.username }}<i class="fa fa-user-circle-o" aria-hidden="true"
+                style="font-size: 1em;"></i></a>
             <ul>
               {% if user.is_authenticated %}
               <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
@@ -110,8 +110,8 @@
   {% block body %}
 
   {% endblock %}
-   <!-- ======= Footer ======= -->
-   <footer id="footer">
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
 
     <!-- <div class="footer-top">
       <div class="container">
@@ -169,11 +169,7 @@
           &copy; Copyright <strong><span>La Mirage</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/ -->
-          Designed by <a class="scrollto" href="#team">La Mirage</a>
+           Designed by <a class="scrollto" href="#team">La Mirage</a>
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">

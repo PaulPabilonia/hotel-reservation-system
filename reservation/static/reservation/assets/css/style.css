@@ -38,6 +38,12 @@ form{
 .background-logo .opacity{
 	opacity: 0.1;
 }
+.font-weight-bold{
+  font-weight: bold;
+}
+.receipt{
+  width: 500px;
+}
 
 /*--------------------------------------------------------------
 # hotel_rooms
@@ -1747,6 +1753,9 @@ section{
   }
   .breadcrumbs ol li {
     display: inline-block;
+  }
+  .receipt{
+    width: 95vw;
   }
 }
 
