@@ -73,6 +73,8 @@
         <ul>
           {% if user.is_authenticated and user.is_staff%}
           <li><a class="nav-link scrollto" href="{% url 'all_bookings' %}">Admin Page</a></li>
+          {% else %}
+          <li><a class="nav-link scrollto" href="{% url 'profile_edit' user.id %}">Edit Profile</a></li>
           {% endif %}
           <!-- {% if user.is_authenticated %}
           <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
@@ -89,7 +91,7 @@
           <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
           <li><a href="{% url 'profile_details' user.id %}">My Profile</a></li>
           {% endif %}
-          <li><a href="{% url 'logout' %}">logout</a></li>
+          <li><a href="{% url 'logout' %}">Log out</a></li>
         </ul>
       </li>
       {% endif %}

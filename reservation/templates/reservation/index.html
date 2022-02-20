@@ -74,6 +74,8 @@
             <ul>
               {% if user.is_authenticated and user.is_staff%}
               <li><a class="nav-link scrollto" href="{% url 'all_bookings' %}">Admin Page</a></li>
+              {% else %}
+              <li><a class="nav-link scrollto" href="{% url 'profile_edit' user.id %}">Edit Profile</a></li>
               {% endif %}
               <!-- {% if user.is_authenticated %}
               <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
@@ -490,7 +492,7 @@
 
           <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="2"
+              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="2"
                 class="purecounter"></span>
               <p>Hotel Rooms</p>
             </div>
