@@ -37,7 +37,7 @@ function load_hotelroom(room) {
     all the amenities you could possibly need during your stay in La Mirage Inn and Suites. A
     Complimentary Bottle of Wine, fresh fruit and mineral water, are provided on arrival. Miami Standard
     Room amenities includes:</p>`;
-    document.querySelector('#hotel-amenities').innerHTML = `li><i class="ri-check-double-line"></i>1 Single Bed</li>
+    document.querySelector('#hotel-amenities').innerHTML = `<li><i class="ri-check-double-line"></i>1 Single Bed</li>
     <li><i class="ri-check-double-line"></i>2 Bedside Table</li>
     <li><i class="ri-check-double-line"></i>Desk, Chairs and Table</li>
     <li><i class="ri-check-double-line"></i>Flat Screen TV with satellite channels</li>

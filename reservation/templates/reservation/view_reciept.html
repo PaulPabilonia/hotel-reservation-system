@@ -43,7 +43,7 @@
           <td>{{ book.numAdults }}</td>
           <td>{{ book.numKids }}</td>
           <td>
-            <a href="{% url 'cancel_booking' book.id %}" class="btn btn-danger">Cancel</a>
+            <a href="{% url 'cancel_mybookings' book.id %}" class="btn btn-danger">Cancel</a>
             <a href="{% url 'booking_edit' book.id %}" class="btn btn-primary">Edit</a>
             <a href="{% url 'view_reciept' book.id %}" class="btn btn-success">View Receipt</a>
           </td>
@@ -144,7 +144,7 @@
 
                   {% endif %}
                 </div>
-                <div class="col-sm">
+                <div class="col-sm-4">
                   <a type="button" class="btn gold" style="color: white;" data-bs-dismiss="modal">Confirm</a>
                 </div>
               </div>

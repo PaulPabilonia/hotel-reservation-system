@@ -78,7 +78,8 @@
             <ul>
               {% if user.is_authenticated and user.is_staff%}
               <li><a class="nav-link scrollto" href="{% url 'all_bookings' %}">Admin Page</a></li>
-              {% else %}
+              <li><a class="nav-link scrollto" href="{% url 'profile_edit' user.id %}">Edit Profile</a></li>
+              {% elif user.is_authenticated %}
               <li><a class="nav-link scrollto" href="{% url 'profile_edit' user.id %}">Edit Profile</a></li>
               {% endif %}
               <!-- {% if user.is_authenticated %}

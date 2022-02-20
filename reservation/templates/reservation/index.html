@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>La Mirage</title>
+  <title>La Mirage Inn and Suites</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -74,7 +74,8 @@
             <ul>
               {% if user.is_authenticated and user.is_staff%}
               <li><a class="nav-link scrollto" href="{% url 'all_bookings' %}">Admin Page</a></li>
-              {% else %}
+              <li><a class="nav-link scrollto" href="{% url 'profile_edit' user.id %}">Edit Profile</a></li>
+              {% elif user.is_authenticated %}
               <li><a class="nav-link scrollto" href="{% url 'profile_edit' user.id %}">Edit Profile</a></li>
               {% endif %}
               <!-- {% if user.is_authenticated %}
@@ -1271,11 +1272,7 @@
           &copy; Copyright <strong><span>La Mirage</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/ -->
-          Designed by <a class="scrollto" href="#team">La Mirage</a>
+  Designed by <a class="scrollto" href="#team">La Mirage</a>
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
@@ -1343,8 +1340,7 @@
         <div class="modal-footer d-flex justify-content-center">
           <div class="signup-section">No account yet? <a type="button" data-dismiss="modal" data-toggle="modal"
               data-target="#signModal" class="text-primary"> Sign Up</a>
-            <div class="signup-section d-flex justify-content-center"><a type="button" data-dismiss="modal"
-                data-toggle="modal" data-target="#" class="text-primary"> <small>Forgot Password</small> </a>
+            <div class="signup-section d-flex justify-content-center"><a type="button" href="{% url 'reset_password' %}" class="text-primary"> <small>Forgot Password</small> </a>
             </div>
           </div>
         </div>

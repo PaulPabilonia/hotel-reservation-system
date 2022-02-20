@@ -22,13 +22,13 @@
           <div class="d-flex flex-column align-items-center text-center">
             {% if userProfile.profile_img %}
             <img src="{{ userProfile.profile_img.url }}" alt="Admin" class="rounded-circle" width="150">
-            {% else %}
+            {% elif user.is_authenticated %}
             <img src="{% static './reservation/images/default_profile.png' %}" alt="Admin" class="rounded-circle"
               width="150">
             {% endif %}
             <div class="mt-3">
               <h4>{{ userProfile.client.first_name }} {{ userProfile.client.last_name }}</h4>
-              {% if userProfile.is_staff %}
+              {% if userProfile.client.is_staff %}
               <p class="text-secondary mb-1">ADMIN</p>
               {% else %}
               <p class="text-secondary mb-1">Guest</p>
