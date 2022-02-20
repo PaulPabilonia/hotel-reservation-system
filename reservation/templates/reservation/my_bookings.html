@@ -5,8 +5,6 @@
 {% block title %} Bookings {% endblock %}
 
 {% block body %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="mt-3 mb-2">
 
   <h2>My Bookings:</h2>
@@ -80,7 +78,7 @@
                 <div><span class="font-weight-bold">Full Name: </span> {{book.client.first_name}}
                   {{book.client.last_name}} </div>
                 <div><span class="font-weight-bold">Email: </span> {{ book.client.email }} </div>
-                <div><span class="font-weight-bold">Phone Number: </span>  {{ book.user_profile.phone_no }} </div>
+                <div><span class="font-weight-bold">Phone Number: </span> {{ book.user_profile.phone_no }} </div>
                 <div class="row">
                   <div class="col-sm">
                     <span class="font-weight-bold">Room Type: </span> {{ book.room_type }}
@@ -94,15 +92,15 @@
                     <span class="font-weight-bold"> Number of Adults: </span> {{ book.numAdults }}
                   </div>
                   <div class="col-sm">
-                    <span class="font-weight-bold"> Number of Kids: </span>  {{ book.numKids }}
+                    <span class="font-weight-bold"> Number of Kids: </span> {{ book.numKids }}
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm">
-                    <span class="font-weight-bold">Check in: </span>  {{ book.checkIn }}
+                    <span class="font-weight-bold">Check in: </span> {{ book.checkIn }}
                   </div>
                   <div class="col-sm">
-                    <span class="font-weight-bold">Check out: </span>  {{ book.checkOut }}
+                    <span class="font-weight-bold">Check out: </span> {{ book.checkOut }}
                   </div>
                 </div>
               </div>
@@ -133,6 +131,4 @@
 {% endblock %}
 
 {% block script %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}
