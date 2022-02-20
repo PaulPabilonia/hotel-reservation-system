@@ -16,6 +16,7 @@ urlpatterns = [
     path("save_changes/<int:user_id>",views.save_changes, name="save_changes"),
     path("update_booking/<int:user_id>",views.update_booking, name="update_booking"),
     path("profile_edit/<int:user_id>",views.profile_edit, name="profile_edit"),
+    path("update_profile/<int:user_id>",views.update_profile, name="update_profile"),
     path("booking_edit/<int:user_id>",views.booking_edit, name="booking_edit"),
     path("all_bookings", views.all_bookings, name="all_bookings"),
     path("all_users", views.all_users, name="all_users"),

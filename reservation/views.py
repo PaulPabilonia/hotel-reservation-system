@@ -135,6 +135,17 @@ def booking_details(request, user_id):
     else:
         return render(request, "reservation/login.html")
 
+def update_profile(request,user_id):
+    user_profile = UserProfile.objects.get(pk=user_id)
+    if request.method == "POST":
+        user_profile.profile_img = request.FILES.get("profile_img")
+        user_profile.save()
+        messages.success(request, "Profile Updated Successfully!")
+        return HttpResponseRedirect(
+            reverse('profile_details', args=(user_id, )))
+    else:
+        return HttpResponseRedirect(
+            reverse('profile_details', args=(user_id, )))
 
 def save_changes(request, user_id):
     user = User.objects.get(pk=user_id)
@@ -152,7 +163,7 @@ def save_changes(request, user_id):
         # if len(request.FILES) != 0:
         #     if len(user_profile.profile_img) > 0:
         #         os.remove(user_profile.profile_img.path)
-        user_profile.profile_img = request.FILES.get('profile_img')
+        #     user_profile.profile_img = request.FILES['profile_img']
         user_profile.nationality = request.POST.get("nationality")
         user_profile.phone_no = request.POST.get("phone_no")
         user_profile.location = request.POST.get("location")
