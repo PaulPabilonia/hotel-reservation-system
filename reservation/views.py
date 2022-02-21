@@ -196,6 +196,12 @@ def update_booking(request, user_id):
         book.checkIn = request.POST.get("checkIn")
         book.checkOut = request.POST.get("checkOut")
         book.mop = request.POST.get("mop")
+
+        if (int(book.numAdults) < 0 and int(book.numKids) < 0):
+            messages.error(request, "Booking Failed!")
+            return HttpResponseRedirect(reverse('booking_edit', args=(user_id, )))
+                   
+
         book.save()
         messages.success(request, "Book Updated Successfully!")
         return HttpResponseRedirect(reverse('booking_edit', args=(user_id, )))
@@ -230,6 +236,19 @@ def book_room(request, user_id):
         checkOut = request.POST["checkOut"]
         mop = request.POST["mop"]
 
+        if (int(numAdults) < 0 and int(numKids) < 0):
+            messages.error(request, "Booking Failed!")
+            return render(
+                request, "reservation/booking_details.html", {
+                    "checkIn": checkIn,
+                    "checkOut": checkOut,
+                    "numAdults": numAdults,
+                    "numKids": numKids,
+                    "mop": mop,
+                    "room_category": room_category,
+                    "room_type": room_type
+                })
+        
         try:
 
             book = Booking(client=user,
